@@ -340,7 +340,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
           </div>
           <div class="modal-body">
             <p>Copy the following link in an e-mail to send to the respective sign-off representatives.</p>
-            <p id='copyPasteModalLink'></p>
+            <input id='copyPasteModalLink' style="width:95%;">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>

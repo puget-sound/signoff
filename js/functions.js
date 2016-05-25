@@ -566,15 +566,15 @@ $(document).ready(function() {
 		var request = "";
 		$("#copyPasteModalLink").html("");
 		var button = $(event.relatedTarget); // Button that triggered the modal
-  		request = button.data('requestid');
-		$("#copyPasteModalLink").html("<a target='_blank' href='respond.php?requestId=" + request + "'>http://signoff.pugetsound.edu/respond.php?requestId=" + request + "</a>");
+  	request = button.data('requestid');
+		$("#copyPasteModalLink").val("http://signoff.pugetsound.edu/respond.php?requestId=" + request).focus().select();
 	})
 
 	$('#addRepresentativeModal').on('shown.bs.modal', function (event) {
 		var request = "";
 		$("#addRepresentative").val("");
 		var button = $(event.relatedTarget); // Button that triggered the modal
-			request = button.data('requestid');
+		request = button.data('requestid');
 		$("#addRepresentativeBtn").attr("onclick", "addRepresentativeFromField(" + request + ");return false;");
 		$('#addRepresentative').keypress(function(e){
 	      if(e.keyCode==13){
