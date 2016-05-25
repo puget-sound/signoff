@@ -211,7 +211,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
           <div style="display: none;" class="alert alert-danger" id="errorValidate" role="alert"></div>
           <form class='form-horizontal'>
             <div class="form-group">
-              <label for="projectOwnerSelect" class="col-sm-4 control-label">Type:</label>
+              <label for="projectOwnerSelect" class="col-sm-4 control-label">Type</label>
               <div class="col-sm-8">
                 <select id='typeOfWork' class="selectpicker" title="Please Select One...">
                   <option value='1' data-hidden="true"></option>
@@ -222,7 +222,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
               </div>
             </div>
             <div class="form-group" id='ticketNumberGroup'>
-              <label for="projectNumber" class="col-sm-4 control-label">Ticket Number:</label>
+              <label for="projectNumber" class="col-sm-4 control-label">Ticket Number</label>
               <div class="col-sm-8">
                 <div class='input-group'>
                 <span class="input-group-addon">
@@ -234,71 +234,71 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
             </div>
             <div id='soundNetGroup'>
                 <div class="form-group">
-                  <label for="projectNumber" class="col-sm-4 control-label">Project ID:</label>
+                  <label for="projectNumber" class="col-sm-4 control-label">Project ID</label>
                   <div class="col-sm-8">
                     <input style="width: 100px;"type="text" class="form-control" id="projectNumber" placeholder="P0100">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="projectNumber" class="col-sm-4 control-label">SoundNet Folder Link:</label>
+                  <label for="projectNumber" class="col-sm-4 control-label">SoundNet Folder Link</label>
                   <div class="col-sm-8">
                     <input style="width: 300px;"type="text" class="form-control" id="soundNetLink" placeholder="Paste SoundNet Link here">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="projectNumber" class="col-sm-4 control-label">LP Task Link:</label>
+                  <label for="projectNumber" class="col-sm-4 control-label">LP Task Link</label>
                   <div class="col-sm-8">
                     <input style="width: 300px;"type="text" class="form-control" id="lpProjectLink" placeholder="Paste LiquidPlanner Link here">
                   </div>
                 </div>
           </div>
             <div class="form-group">
-              <label for="sprintNumber" class="col-sm-4 control-label">Sprint:</label>
+              <label for="sprintNumber" class="col-sm-4 control-label">Sprint</label>
               <div class="col-sm-8">
                 <input style="width: 75px;"type="text" class="form-control" id="sprintNumber" placeholder="10">
               </div>
             </div>
            <div class="form-group">
-              <label for="projectName" class="col-sm-4 control-label">Project Name*:</label>
+              <label for="projectName" class="col-sm-4 control-label">Project Name *</label>
               <div class="col-sm-8">
                 <input style="width: 250px;"type="text" class="form-control" id="projectName" placeholder="SoundNet Project or Ticket Name">
               </div>
             </div>
             <div id='hidedetailfields'>
             <div class="form-group">
-              <label for="appDesignerProjects" class="col-sm-4 control-label">App Designer Projects:</label>
+              <label for="appDesignerProjects" class="col-sm-4 control-label">App Designer Projects</label>
               <div class="col-sm-8">
                 <input style="width: 250px;"type="text" class="form-control" id="appDesignerProjects" placeholder="If applicable, separate by commas.">
               </div>
             </div>
             <div class="form-group">
-              <label for="appDesignerProjects" class="col-sm-4 control-label">PL/SQL Objects:</label>
+              <label for="appDesignerProjects" class="col-sm-4 control-label">PL/SQL Objects</label>
               <div class="col-sm-8">
                 <input style="width: 250px;"type="text" class="form-control" id="plsqlObjects" placeholder="If applicable, separate by commas.">
               </div>
             </div>
             <div class="form-group">
-              <label for="appDesignerProjects" class="col-sm-4 control-label">Other:</label>
+              <label for="appDesignerProjects" class="col-sm-4 control-label">Other</label>
               <div class="col-sm-8">
                 <input style="width: 250px;"type="text" class="form-control" id="otherObjects" placeholder="If applicable, separate by commas.">
               </div>
             </div>
           </div>
             <div class="form-group">
-              <label for="projectOwnerSelect" class="col-sm-4 control-label">Project Owner*:</label>
+              <label for="projectOwnerSelect" class="col-sm-4 control-label">Project Owner *</label>
               <div class="col-sm-8">
                 <select id='projectOwnerSelect' class="selectpicker" title="Please Select One..." data-live-search="true">
                 </select>
               </div>
             </div>
             <div class="form-group" id='sumWorkGroup'>
-              <label for="summaryWorkCompleted" class="col-sm-4 control-label">Summary of Work Completed*:</label>
+              <label for="summaryWorkCompleted" class="col-sm-4 control-label">Summary of Work Completed *</label>
               <div class="col-sm-8">
                 <textarea style="width: 300px;" id="summaryWorkCompleted" class="form-control" rows=10 placeholder="Summarize Work Completed for this Project. Including and phasing / caveats"></textarea>
               </div>
             </div>
             <div class="form-group" id='testinggroup'>
-              <label for="testingTypeSelect" class="col-sm-4 control-label">Proof of Testing*:</label>
+              <label for="testingTypeSelect" class="col-sm-4 control-label">Proof of Testing *</label>
               <div class="col-sm-8">
               <select id='testingTypeSelect' class="selectpicker" title="Testing provided by:">
                   <option data-hidden="true" value='1'></option>
@@ -308,7 +308,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
               </div>
             </div>
             <div class="form-group">
-              <label for="addAdditionalUser" class="col-sm-4 control-label">Request Sign-off From*:</label>
+              <label for="addAdditionalUser" class="col-sm-4 control-label">Request Sign-off From *</label>
               <div class="col-sm-8" id='input_fields_wrap'>
                 <button type="button" class="btn btn-default btn-sm" id="addUsers">Add Additional User</button>
                 <div style='width: 325px; margin-top: 2px;' class="input-group">
@@ -339,7 +339,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
             <h4 class="modal-title" id="myModalLabel">Get Request Link</h4>
           </div>
           <div class="modal-body">
-            <p>Copy the following link in an e-mail to send to the respective sign-off representatives:</p>
+            <p>Copy the following link in an e-mail to send to the respective sign-off representatives.</p>
             <p id='copyPasteModalLink'></p>
           </div>
           <div class="modal-footer">
@@ -382,7 +382,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
           <div style="display: none;" class="alert alert-success" id="userManageSuccess" role="alert"></div>
           <form>
             <div class="form-group">
-              <label for="addProjectOwner">Add User:</label>
+              <label for="addProjectOwner">Add User</label>
                 <div class="form-inline">
                 <input style="width: 200px;"type="text" class="form-control" id="addUser" placeholder="jlogger">
                 <button class="btn btn-default" type="button" onclick='addUserFromField();'>Add</button>
@@ -419,7 +419,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
           <div style="display: none;" class="alert alert-success" id="addOwnerSuccess" role="alert"></div>
           <form>
             <div class="form-group">
-              <label for="addProjectOwner">Add Project Owner:</label>
+              <label for="addProjectOwner">Add Project Owner</label>
                 <div class="form-inline">
                 <input style="width: 200px;"type="text" class="form-control" id="addProjectOwner" placeholder="Academic Advising">
                 <button class="btn btn-default" type="button" onclick='addProjectOwnerFromField();'>Add</button>
@@ -492,7 +492,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
           <div style="display: none;" class="alert alert-danger" id="editRequestErrorValidate" role="alert"></div>
           <form class='form-horizontal'>
             <div class="form-group">
-              <label for="projectOwnerSelect" class="col-sm-4 control-label">Type:</label>
+              <label for="projectOwnerSelect" class="col-sm-4 control-label">Type</label>
               <div class="col-sm-8">
                 <select id='typeOfWorkEdit' class="selectpicker" title="Please Select One...">
                   <option value='1' data-hidden="true"></option>
@@ -503,7 +503,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
               </div>
             </div>
             <div class="form-group" id='ticketNumberGroupEdit'>
-              <label for="projectNumber" class="col-sm-4 control-label">Ticket Number:</label>
+              <label for="projectNumber" class="col-sm-4 control-label">Ticket Number</label>
               <div class="col-sm-8">
                 <div class='input-group'>
                 <span class="input-group-addon">
@@ -515,71 +515,71 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
             </div>
             <div id='soundNetGroupEdit'>
                 <div class="form-group">
-                  <label for="projectNumber" class="col-sm-4 control-label">Project ID:</label>
+                  <label for="projectNumber" class="col-sm-4 control-label">Project ID</label>
                   <div class="col-sm-8">
                     <input style="width: 100px;"type="text" class="form-control" id="projectNumberEdit" placeholder="P0100">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="projectNumber" class="col-sm-4 control-label">SoundNet Folder Link:</label>
+                  <label for="projectNumber" class="col-sm-4 control-label">SoundNet Folder Link</label>
                   <div class="col-sm-8">
                     <input style="width: 300px;"type="text" class="form-control" id="soundNetLinkEdit" placeholder="Paste SoundNet Link here">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="projectNumber" class="col-sm-4 control-label">LP Task Link:</label>
+                  <label for="projectNumber" class="col-sm-4 control-label">LP Task Link</label>
                   <div class="col-sm-8">
                     <input style="width: 300px;"type="text" class="form-control" id="lpProjectLinkEdit" placeholder="Paste LiquidPlanner Link here">
                   </div>
                 </div>
           </div>
             <div class="form-group">
-              <label for="sprintNumber" class="col-sm-4 control-label">Sprint:</label>
+              <label for="sprintNumber" class="col-sm-4 control-label">Sprint</label>
               <div class="col-sm-8">
                 <input style="width: 75px;"type="text" class="form-control" id="sprintNumberEdit" placeholder="10">
               </div>
             </div>
            <div class="form-group">
-              <label for="projectName" class="col-sm-4 control-label">Project Name*:</label>
+              <label for="projectName" class="col-sm-4 control-label">Project Name *</label>
               <div class="col-sm-8">
                 <input style="width: 250px;"type="text" class="form-control" id="projectNameEdit" placeholder="SoundNet Project or Ticket Name">
               </div>
             </div>
 
             <div class="form-group">
-              <label for="appDesignerProjects" class="col-sm-4 control-label">App Designer Projects:</label>
+              <label for="appDesignerProjects" class="col-sm-4 control-label">App Designer Projects</label>
               <div class="col-sm-8">
                 <input style="width: 250px;"type="text" class="form-control" id="appDesignerProjsEdit" placeholder="If applicable, separate by commas.">
               </div>
             </div>
             <div class="form-group">
-              <label for="appDesignerProjects" class="col-sm-4 control-label">PL/SQL Objects:</label>
+              <label for="appDesignerProjects" class="col-sm-4 control-label">PL/SQL Objects</label>
               <div class="col-sm-8">
                 <input style="width: 250px;"type="text" class="form-control" id="plsqlObjectsEdit" placeholder="If applicable, separate by commas.">
               </div>
             </div>
             <div class="form-group">
-              <label for="appDesignerProjects" class="col-sm-4 control-label">Other:</label>
+              <label for="appDesignerProjects" class="col-sm-4 control-label">Other</label>
               <div class="col-sm-8">
                 <input style="width: 250px;"type="text" class="form-control" id="otherObjectsEdit" placeholder="If applicable, separate by commas.">
               </div>
             </div>
 
             <div class="form-group">
-              <label for="projectOwnerSelect" class="col-sm-4 control-label">Project Owner*:</label>
+              <label for="projectOwnerSelect" class="col-sm-4 control-label">Project Owner *</label>
               <div class="col-sm-8">
                 <select id='projectOwnerSelectEdit' class="selectpicker" title="Please Select One..." data-live-search="true">
                 </select>
               </div>
             </div>
             <div class="form-group" id='sumWorkGroupEdit'>
-              <label for="summaryWorkCompleted" class="col-sm-4 control-label">Summary of Work Completed*:</label>
+              <label for="summaryWorkCompleted" class="col-sm-4 control-label">Summary of Work Completed *</label>
               <div class="col-sm-8">
                 <textarea style="width: 300px;" id="summaryWorkCompletedEdit" class="form-control" rows=10 placeholder="Summarize Work Completed for this Project. Including and phasing / caveats"></textarea>
               </div>
             </div>
             <div class="form-group" id='testinggroupEdit'>
-              <label for="testingTypeSelect" class="col-sm-4 control-label">Proof of Testing*:</label>
+              <label for="testingTypeSelect" class="col-sm-4 control-label">Proof of Testing *</label>
               <div class="col-sm-8">
               <select id='testingTypeSelectEdit' class="selectpicker" title="Testing provided by:">
                   <option data-hidden="true" value='1'></option>
@@ -590,35 +590,35 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
             </div>
 
             <div class="form-group">
-              <label for="appDesignerProjects" class="col-sm-4 control-label">Request To:</label>
+              <label for="appDesignerProjects" class="col-sm-4 control-label">Request To</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control" id="requestToEdit" placeholder="username" readonly>
                 </div>
             </div>
 
             <div class="form-group">
-              <label for="appDesignerProjects" class="col-sm-4 control-label" >Requester Full Name:</label>
+              <label for="appDesignerProjects" class="col-sm-4 control-label" >Requester Full Name</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control" id="requesterFullNameEdit" placeholder="username" readonly>
                 </div>
             </div>
 
             <div class="form-group">
-              <label for="appDesignerProjects" class="col-sm-4 control-label">Author:</label>
+              <label for="appDesignerProjects" class="col-sm-4 control-label">Author</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control" id="authorEdit" placeholder="username">
                 </div>
             </div>
 
             <div class="form-group">
-              <label for="appDesignerProjects" class="col-sm-4 control-label">Author Full Name:</label>
+              <label for="appDesignerProjects" class="col-sm-4 control-label">Author Full Name</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control" id="authorFullNameEdit" placeholder="username">
                 </div>
             </div>
 
             <div class="form-group">
-              <label for="appDesignerProjects" class="col-sm-4 control-label">Request Date:</label>
+              <label for="appDesignerProjects" class="col-sm-4 control-label">Request Date</label>
                 <div class="col-sm-8">
                     <input type="date" class="form-control" name="requestDate" id="requestDateEdit" aria-describedby="basic-addon1" placeholder="01/31/2015" readonly/>
                 </div>
