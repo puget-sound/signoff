@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Backlog | Project Sign-Off</title>
+
+    <!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script>
+        $(function () {
+
+            $("#projectID").hide();
+            $("#soundnet").hide();
+            $("#projectLink").hide();
+            $("#ticketNumber").hide();
+            $("#datepicker").datepicker();
+            $("#datepicker2").datepicker();
+        });
+
+    </script>
+
+    <style>
+    </style>
+</head>
+<body>
+    <style>
+        body {
+            padding-top: 70px;
+            padding-bottom: 30px;
+        }
+
+        .row{
+            padding-left: 30px;
+            padding-bottom: 15px;
+        }
+
+
+    </style>
+
+    <form name='signOffImport' method='POST' action='php/importSignOff.php' enctype="multipart/form-data">
+        <!--|Container for First set of Fields|-->
+        <div class="container" style="max-width: 800px">
+            <!--|Header Image|-->
+            <div class="row">
+                <p style="text-align: center;">
+                    <img src="images/PMOLogo.jpg" height="100"><img />
+                </p>
+            </div>
+            <div class="panel panel-default">
+                <!--|Heading|-->
+                <div class="panel-heading">
+                    <h3 class="panel-title">Add Old Request</h3>
+                </div>
+                <div class="panel-body">
+
+                    <!--|Work Type Selector|-->
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="selector" style="text-decoration: underline">Type of Work</label>
+                            <select id="selector" name="typeOfWork" class="form-control input-md" required>
+                                <option value="none" data-hidden="true" selected="selected" required>Please Select One...</option>
+                                <option value="project">Project (Soundnet/LP)</option>
+                                <option value="ticket"> KACE Ticket</option>
+                            </select>
+                            <script>
+                                $("#selector").change(function () {
+                                    var choose = this.value;
+                                    if (choose == "none") {
+                                        $("#projectID").hide(400);
+                                        $("#soundnet").hide(400);
+                                        $("#projectLink").hide(400);
+                                        $("#ticketNumber").hide(400);
+                                    }
+                                    if (choose == "project") {
+                                        $("#ticketNumber").hide(400);
+                                        $("#projectID").show(400);
+                                        $("#soundnet").show(400);
+                                        $("#projectLink").show(400);
+
+                                    }
+                                    if (choose == "ticket") {
+                                        $("#projectID").hide(400);
+                                        $("#soundnet").hide(400);
+                                        $("#projectLink").hide(400);
+                                        $("#ticketNumber").show(400);
+                                    }
+                                });
+                            </script>
+
+                        </div>
+                    </div>
+
+					<!--|KACE Ticket Number|-->
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="ticketNumber" style="text-decoration: underline">KACE Ticket Number</label>
+                            <input type="text" name="ticketNumber" class="form-control" placeholder="34833" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+
+                    <!--|Project ID|-->
+                    <div class="row" >
+                        <div class="input-group">
+                            <label for="projectID" style="text-decoration: underline">Project ID</label>
+                            <input type="text" name="projectID" class="form-control" placeholder="P0100" aria-describedby="basic-addon1" pattern="[P-0-9]">
+                        </div>
+                    </div>
+
+                    <!--|Soundnet Link|-->
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="soundnet" style="text-decoration: underline">Soundnet Link</label>
+                            <input type="text" name="soundNetLink" class="form-control" placeholder="Paste Soundnet Link Here" aria-describedby="basic-addon1" >
+                        </div>
+                    </div>
+
+                    <!--|LiquidPlanner Link|-->
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="projectLink" style="text-decoration: underline">LiquidPlanner Link</label>
+                            <input type="text" name="liquidPlannerLink" class="form-control" placeholder="Paste LiquidPlanner Link Here" aria-describedby="basic-addon1" >
+                        </div>
+                    </div>
+
+					<!--|Sprint Field|-->
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="selector" style="text-decoration: underline">Sprint</label>
+                            <input type="number" name="sprint" class="form-control" placeholder="10" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+
+					<!--|Project Name Field|-->
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="selector" style="text-decoration: underline">Project Name</label>
+                            <input type="text" name="projectName" class="form-control" placeholder="Soundnet Project or Ticket Name" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+
+					<!--|App Designer Projects Field|-->
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="selector" style="text-decoration: underline">App Designer Proj</label>
+                            <input type="text" name="appDesingerProjs" class="form-control" placeholder="If applicable, separate by commas" aria-describedby="basic-addon1" >
+                        </div>
+                    </div>
+
+					<!--|Pl/SQL Objects Field|-->
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="pl/sql" style="text-decoration: underline">Pl/SQL Objects</label>
+                            <input type="text" name="plsqlObjects" id="pl/sql" class="form-control" placeholder="If applicable, separate by commas" aria-describedby="basic-addon1" >
+                        </div>
+                    </div>
+
+                    <!--|Other Field|-->
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="selector" style="text-decoration: underline">Other</label>
+                            <input type="text" name="otherObjects" class="form-control" placeholder="If applicable, separate by commas" aria-describedby="basic-addon1" >
+                        </div>
+                    </div>
+
+                    <!--|Project Owner Selector|-->
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="projectOwner" style="text-decoration: underline">Project Owner</label>
+                            <select class="form-control" name="projectOwner" input-md" aria-describedby="basic-addon1" id="projectOwner">
+                                <option>Technology Services</option>
+                                <option>Academic Advising</option>
+                                <option>Admission</option>
+                                <option>Business Services</option>
+                                <option>Career & Employment Services</option>
+                                <option>Community Engagement</option>
+                                <option>Community Music</option>
+                                <option>Dean of Students</option>
+                                <option>Facilities Services</option>
+                                <option>Human Resources</option>
+                                <option>Library</option>
+                                <option>Mail Services</option>
+                                <option>Multiple</option>
+                                <option>Office of Finance</option>
+                                <option>Office of the President</option>
+                                <option>Office of the Registrar</option>
+                                <option>Residence Life</option>
+                                <option>Security Services</option>
+                                <option>Student Activities</option>
+                                <option>Student Financial Services</option>
+                                <option>University Relations</option>
+                            </select>
+                        </div>
+                    </div>
+
+					<!--|Sum Work Completed|-->
+					 <div class="row">
+                        <div class="input-group">
+                            <label for="sumWorkCompleted" style="text-decoration: underline">Sum Work Completed</label>
+                            <input type="text" class="form-control" name="sumWorkCompleted" id="datepicker" aria-describedby="basic-addon1" placeholder="Sum Work Completed"  />
+                        </div>
+                    </div>
+
+					<!--|Testing Type|-->
+					 <div class="row">
+                        <div class="input-group">
+                            <label for="testingType" style="text-decoration: underline">Testing Type</label>
+                            <input type="text" class="form-control" name="testingType" id="datepicker" aria-describedby="basic-addon1" placeholder="Testing Type"  />
+                        </div>
+                    </div>
+
+                    <!--|Proof of Testing Field|-->
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="selector" style="text-decoration: underline">Proof of Testing</label>
+                            <select class="form-control" name="proofTesting" input-md" aria-describedby="basic-addon1">
+                                <option> Excel Spreadsheet/Link</option>
+                                <option> Testing Summary (Text)</option>
+                            </select>
+                        </div>
+                    </div>
+
+					<!--|Request To|-->
+					 <div class="row">
+                        <div class="input-group">
+                            <label for="requestTo" style="text-decoration: underline">Request To</label>
+                            <input type="text" class="form-control" name="requestTo" id="datepicker" aria-describedby="basic-addon1" placeholder="Request To"  />
+                        </div>
+                    </div>
+
+					<!--|ReqFullName|-->
+					 <div class="row">
+                        <div class="input-group">
+                            <label for="reqFullName" style="text-decoration: underline">Requester Full Name</label>
+                            <input type="text" class="form-control" name="reqFullName" id="datepicker" aria-describedby="basic-addon1" placeholder="Full Name"  />
+                        </div>
+                    </div>
+
+					<!--|Author|-->
+					 <div class="row">
+                        <div class="input-group">
+                            <label for="author" style="text-decoration: underline">Author</label>
+                            <input type="text" class="form-control" name="author" value="Import" id="datepicker" aria-describedby="basic-addon1" placeholder="Author" />
+                        </div>
+                    </div>
+
+					<!--|Author Full Name|-->
+					 <div class="row">
+                        <div class="input-group">
+                            <label for="authorFullName" style="text-decoration: underline">Author Name</label>
+                            <input type="text" class="form-control" name="authorFullName" value="System Import" id="datepicker" aria-describedby="basic-addon1" placeholder="Author Full Name"  />
+                        </div>
+                    </div>
+
+					 <!--|Completion Date Field|-->
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="selector" style="text-decoration: underline">Request Date</label>
+                            <input type="date" class="form-control" name="requestDate" id="datepicker2" aria-describedby="basic-addon1" placeholder="01/31/2015" />
+                        </div>
+                    </div>
+
+                    <!--|Submit Date Field|-->
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="selector" style="text-decoration: underline">Submit Date</label>
+                            <input type="date" class="form-control" name="submitDate" id="datepicker" aria-describedby="basic-addon1" placeholder="01/31/2015" />
+                        </div>
+                    </div>
+
+					<!--|Status|-->
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="selector" style="text-decoration: underline">Status</label>
+                            <input type="text" class="form-control" name="status" value="Received" id="datepicker" aria-describedby="basic-addon1" placeholder="status" />
+                        </div>
+                    </div>
+
+					<!--|Status|-->
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="selector" style="text-decoration: underline">File</label>
+                            <input type="file" name="fileToUpload" id="fileToUpload">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--|Summary of Work Completed Field|-->
+        <div class="container" style="max-width: 800px">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Additional Comments
+                </div>
+                <div class="panel-body">
+                    <textarea class="form-control" name="additionalComments" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!--|Cancel/Submit Buttons|-->
+        <div class="container" style="max-width:800px">
+            <div class="panel-body">
+                <div class="row">
+                    <button type="button" onclick="refreshView();" class="btn btn-default">Cancel</button>
+                    <button style="margin-left: 2px" type="submit" name="submit" class="btn btn-default" onclick="submitNewRequest();">Submit!</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
