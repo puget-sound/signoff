@@ -12,10 +12,16 @@ function clearRequestForm() {
 	$("#appDesignerProjects").val("");
 	$("#plsqlObjects").val("");
 	$("#otherObjects").val("");
+	$(".request-representative").val("");
 	$("#projectOwnerSelect").val(1);
 	$("#projectOwnerSelect").selectpicker("refresh");
+	$("#summaryWorkCompleted").val("");
 	$("#testingTypeSelect").val(1);
 	$("#testingTypeSelect").selectpicker("refresh");
+	var requestLength = $('.request-representative-div').length;
+	for (var i = requestLength; i > 1;  i--) {
+			$('.request-representative-div:last').remove();
+	}
 }
 
 function refreshView() {
@@ -567,7 +573,7 @@ $(document).ready(function() {
 		$("#copyPasteModalLink").html("");
 		var button = $(event.relatedTarget); // Button that triggered the modal
   	request = button.data('requestid');
-		$("#copyPasteModalLink").val("http://signoff.pugetsound.edu/respond.php?requestId=" + request).focus().select();
+		$("#copyPasteModalLink").val("http://signoff.pugetsound.edu/respond.php?requestId=" + request).select();
 	})
 
 	$('#addRepresentativeModal').on('shown.bs.modal', function (event) {
@@ -601,7 +607,7 @@ $(document).ready(function() {
 	})
 
 
-	//add/remove fileds to the new request form
+	//add/remove fields to the new request form
     var max_fields      = 10; //maximum input boxes allowed
     var wrapper         = $("#input_fields_wrap"); //Fields wrapper
     var add_button      = $("#addUsers"); //Add button ID
@@ -611,7 +617,8 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append("<div style='width: 325px; margin-top: 2px;' class='input-group'><span class='input-group-addon'><a href='#'' id='remove_field'>Remove</a></span><input type='text' class='form-control' id='requestUsers[]' placeholder='username' aria-describedby='email-addon'><span class='input-group-addon' id='email-addon'>@pugetsound.edu</span></div>"); //add input box
+            $(wrapper).append("<div style='width: 325px; margin-top: 2px;' class='input-group request-representative-div'><span class='input-group-addon'><a href='#'' id='remove_field'>Remove</a></span><input type='text' class='form-control request-representative' id='requestUsers[]' placeholder='username' aria-describedby='email-addon'><span class='input-group-addon' id='email-addon'>@pugetsound.edu</span></div>"); //add input box
+						$('.request-representative:last').focus();
         }
     });
 

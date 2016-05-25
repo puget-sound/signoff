@@ -205,7 +205,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
         <div class="modal-content">
           <div class="modal-header">
              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Request Wizard</h4>
+            <h4 class="modal-title" id="myModalLabel">New Sign-off Request</h4>
           </div>
           <div class="modal-body">
           <div style="display: none;" class="alert alert-danger" id="errorValidate" role="alert"></div>
@@ -310,14 +310,16 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
             <div class="form-group">
               <label for="addAdditionalUser" class="col-sm-4 control-label">Request Sign-off From *</label>
               <div class="col-sm-8" id='input_fields_wrap'>
-                <button type="button" class="btn btn-default btn-sm" id="addUsers">Add Additional User</button>
-                <div style='width: 325px; margin-top: 2px;' class="input-group">
+                <div style='width: 325px; margin-top: 2px;' class="input-group request-representative-div">
                   <span class="input-group-addon">
                     <a href="#" id="remove_field">Remove</a>
                   </span>
-                  <input type="text" class="form-control" id="requestUsers[]" placeholder="username" aria-describedby="email-addon">
+                  <input type="text" class="form-control request-representative" id="requestUsers[]" placeholder="username" aria-describedby="email-addon">
                   <span class="input-group-addon" id="email-addon">@pugetsound.edu</span>
                 </div>
+              </div>
+              <div class="col-sm-4 col-sm-offset-4" style="margin-top:5px;">
+                <button type="button" class="btn btn-default btn-sm" id="addUsers">Add additional user</button>
               </div>
             </div>
           </form>
