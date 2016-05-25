@@ -123,6 +123,11 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
               </ul>
             </li>
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="#" data-target='#newRequestModal' data-toggle='modal'><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;&nbsp;New Sign-off Request</a>
+              </li>
+          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -326,7 +331,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
     <!-- end modal -->
     </div>
           <div class="modal-footer">
-             <button type="button" onclick="refreshView();" class="btn btn-default" data-dismiss="modal">Cancel</button><button style='margin-left: 2px' type="button" class="btn btn-default" onclick="submitNewRequest();">Submit</button>
+             <button type="button" onclick="refreshView();" class="btn btn-link" data-dismiss="modal">Cancel</button><button style='margin-left: 2px' type="button" class="btn btn-default" onclick="submitNewRequest();">Submit</button>
           </div>
         </div>
       </div>
@@ -364,7 +369,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
             <p>Are you sure you want to <strong>delete</strong> this project request?</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
             <a id="deleteRequestBtn" class="btn btn-danger">Delete</a>
           </div>
         </div>
@@ -472,7 +477,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
             <button class="btn btn-default" type="submit" id="addRepresentativeBtn" >Add</button>
           </div>
         </div>
@@ -630,7 +635,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
     <!-- end modal -->
     </div>
           <div class="modal-footer">
-             <button type="button" onclick="refreshView();" class="btn btn-default" data-dismiss="modal">Cancel</button>
+             <button type="button" onclick="refreshView();" class="btn btn-link" data-dismiss="modal">Cancel</button>
              <button style='margin-left: 2px' type="submit" id="saveRequestEditsBtn" class="btn btn-default">Save</button>
           </div>
         </div>
