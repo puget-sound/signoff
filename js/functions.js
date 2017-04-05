@@ -1,4 +1,5 @@
 function clearRequestForm() {
+	$("#errorValidate").hide();
 	$("#ticketNumberGroup").hide();
 	$("#soundNetGroup").hide();
 	$("#typeOfWork").val(1);
@@ -558,7 +559,7 @@ $(document).ready(function() {
 
 
 	//hides search & filter, shows requests, initialized new sign-off reqeust form
-	$('#newRequestModal').on('shown.bs.modal', function (event) {
+	$('#newRequestModal').on('show.bs.modal', function (event) {
 		//initialize project owners list
 		clearRequestForm();
 		loadProjectOwners();
