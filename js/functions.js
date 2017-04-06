@@ -355,7 +355,7 @@ function validateRequest() {
 		$("#errorValidate").show();
 		return false;
 	}  else if (users.join() == "") {
-		$("#errorValidate").html("You need to request sign-off from atleast <strong>one user</strong>. This step is required.");
+		$("#errorValidate").html("You need to request sign-off from at least <strong>one user</strong>. This step is required.");
 		window.scrollTo(0, 0);
 		$("#errorValidate").show();
 		return false;
