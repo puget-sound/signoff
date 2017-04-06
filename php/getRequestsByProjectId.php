@@ -13,6 +13,12 @@ if($jsonp_callback) {
 	}
 }
 
+if($projectId == "") {
+	$json = json_encode(array("error" => "No project ID specified."));
+	print $jsonp_callback ? "$jsonp_callback($json)" : $json;
+	exit;
+}
+
 require_once('connect.php');
 $conn = db_connect();
 if (!$conn) {
