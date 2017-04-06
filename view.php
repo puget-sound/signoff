@@ -74,22 +74,6 @@ $fileQueryResult = $fileQuery->fetch_array(MYSQLI_ASSOC);
 
           <table>
             <tr>
-              <td style='padding: 3px;'><strong>Type:</strong></td>
-              <td style='padding: 3px;'>  <?php
-
-                if ($result['typeOfWork'] == 'project') {
-                  echo ("Project");
-                }
-                if ($result['typeOfWork'] == 'ticket') {
-                  echo ("Ticket (KACE)");
-                }
-                if ($result['typeOfWork'] == "req") {
-                  echo ("Requirements or Documentation");
-                }
-                ?>
-                </td>
-            <tr>
-            <tr>
               <td style='padding: 3px;'><strong>Project Name:</strong></td>
               <td style='padding: 3px;'><?php echo(urldecode($result['projectName'])); ?></td>
             </tr>
@@ -125,6 +109,14 @@ $fileQueryResult = $fileQuery->fetch_array(MYSQLI_ASSOC);
               <td style='padding: 3px;'><strong>Request Date:</strong></td>
               <td style='padding: 3px;'><?php echo date('M j Y g:i A', strtotime($result['requestDate'])); ?></td>
             </tr>
+            <?php if ($result["status"] == "Pending") { ?>
+            <tr>
+              <td style='padding: 3px;'><strong>Get link:</strong></td>
+              <td style='padding: 3px;'>
+                <input id="get-signoff-link" class="form-control input-sm" type="text" value="http://signoff.pugetsound.edu/respond.php?requestId=<?php echo $result['requestId']?>" style="width:450px;" selected="selected">
+                </td>
+            <tr>
+              <?php }?>
           </table>
           <?php
           if ($result['ticketNumber'] != "") {
@@ -218,6 +210,14 @@ $fileQueryResult = $fileQuery->fetch_array(MYSQLI_ASSOC);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("#get-signoff-link").select();
+        $("#get-signoff-link").on('click', function() {
+          $(this).select();
+        });
+    });
+    </script>
     <!--<script src="js/docs.min.js"></script> -->
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!--<script src="js/ie10-viewport-bug-workaround.js"></script>-->
