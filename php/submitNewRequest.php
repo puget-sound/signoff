@@ -102,7 +102,7 @@ foreach ($userArray as $value) {
 		'Pending', '', '')");
 	$log->logInfo("$myname | $author Created Sign-off Request #" . $conn->insert_id .". Intended for: ". urldecode($fullName). " ($user).");
 }
-$json = json_encode(array("success" => "true"));
+$json = json_encode(array("success" => "true", "requestId" => $conn->insert_id));
 print $jsonp_callback ? "$jsonp_callback($json)" : $json;
 
 
