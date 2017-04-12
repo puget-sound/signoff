@@ -13,7 +13,7 @@ var p = "<div id='trayframe' style='position:fixed;z-index:1050;'>\
 	<iframe src='https://lxphpdev01.pugetsound.edu/signoff/create.php?ticketNumber="+v+"&projectTitle="+u+"' onload=\"$('#trayframe iframe').slideDown(500);\">Enable iFrames.</iframe>\
 	<style type='text/css'>\
 		#trayframe_veil { display: none; position: fixed; width: 100%; height: 100%; top: 0; left: 0; background-color: rgba(255,255,255,.25); cursor: pointer; z-index: 900; }\
-		#trayframe iframe { display: none; position: fixed; top: 0; left: 0; width: 100%; height:397px; z-index: 999; border:none; margin: 0; }\
+		#trayframe iframe { display: none; position: fixed; top: 0; left: 0; width: 100%; height:422px; z-index: 999; border:none; margin: 0; }\
 	</style>\
 </div>";
 if(top.frames["kbox"]) p = "<body>" + p + "</body>";
