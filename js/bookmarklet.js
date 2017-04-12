@@ -3,10 +3,10 @@
 	// the minimum version of jQuery we want
 		var v = "",
 		u = "";
-	if(top.frames["kbox"]) {v = top.frames["kbox"].document.getElementsByTagName('h1')[0].innerHTML;
+	if(top.frames["kbox"]) {v = top.frames["kbox"].document.getElementsByClassName('k-main')[0].getElementsByTagName('h1')[0].innerHTML;
 u = top.frames["kbox"].document.getElementById('edit-title').innerText}
 else {
-v = document.getElementsByTagName('h1')[0].innerHTML;
+v = document.getElementsByClassName('k-main')[0].getElementsByTagName('h1')[0].innerHTML;
 u = document.getElementById('edit-title').innerText}
 var p = "<div id='trayframe' style='position:fixed;z-index:1050;'>\
 	<div id='trayframe_veil'></div>\
