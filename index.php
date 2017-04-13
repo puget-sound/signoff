@@ -60,7 +60,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Project Sign-Off</title>
+    <title>Sign-off</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">

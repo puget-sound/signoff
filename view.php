@@ -22,7 +22,7 @@ $fileQueryResult = $fileQuery->fetch_array(MYSQLI_ASSOC);
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>View | Project Sign-Off</title>
+    <title>Sign-off - View Request</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">

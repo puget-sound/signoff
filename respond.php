@@ -54,7 +54,7 @@ if ($query->num_rows > 0) {
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Respond | Project Sign-Off</title>
+    <title>Sign-off - Respond</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
