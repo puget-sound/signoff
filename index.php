@@ -70,6 +70,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
     <link href="css/bootstrap-select.min.css" rel="stylesheet">
     <link href="css/bootstrap-table.min.css" rel="stylesheet">
     <link href="css/bootstrap.icon-large.min.css" rel="stylesheet">
+    <link rel="icon" href="images/grey-favicon.png" type="image/png">
 
     <!-- Custom styles for this template -->
     <!--<link href="theme.css" rel="stylesheet">-->

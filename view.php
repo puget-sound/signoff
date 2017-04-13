@@ -30,6 +30,7 @@ $fileQueryResult = $fileQuery->fetch_array(MYSQLI_ASSOC);
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- Bootstrap select theme -->
     <link href="css/bootstrap-select.min.css" rel="stylesheet">
+    <link rel="icon" href="images/grey-favicon.png" type="image/png">
 
     <!-- Custom styles for this template -->
     <!--<link href="theme.css" rel="stylesheet">-->
