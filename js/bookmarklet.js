@@ -10,15 +10,15 @@ v = document.getElementsByClassName('k-main')[0].getElementsByTagName('h1')[0].i
 u = document.getElementById('edit-title').innerText}
 var p = "<div id='trayframe' style='position:fixed;z-index:1050;'>\
 	<div id='trayframe_veil'></div>\
-	<iframe src='https://lxphpdev01.pugetsound.edu/signoff/create.php?ticketNumber="+v+"&projectTitle="+u+"' onload=\"$('#trayframe iframe').slideDown(500);\">Enable iFrames.</iframe>\
+	<iframe src='https://lxphpdev01.pugetsound.edu/signoff/create.php?ticketNumber="+v+"&projectTitle="+u+"' onload=\"jQuery('#trayframe iframe').slideDown(500);\">Enable iFrames.</iframe>\
 	<style type='text/css'>\
 		#trayframe_veil { display: none; position: fixed; width: 100%; height: 100%; top: 0; left: 0; background-color: rgba(255,255,255,.25); cursor: pointer; z-index: 900; }\
-		#trayframe iframe { display: none; position: fixed; top: 0; left: 0; width: 100%; height:422px; z-index: 999; border:none; margin: 0; }\
+		#trayframe iframe { display: none; position: fixed; top: 0; left: 0; width: 100%; height:417px; z-index: 999; border:none; margin: 0; }\
 	</style>\
 </div>";
-if(top.frames["kbox"]) p = "<body>" + p + "</body>";
+if(top.frames["kbox"]) document.getElementsByTagName("html")[0].appendChild(document.createElement("body"));;
 
-if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
+if (window.jQuery === undefined) {
 	var done = false;
 	var script = document.createElement("script");
 	script.src = "https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js";
@@ -36,25 +36,25 @@ if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
 
 	function initMyBookmarklet() {
 		(window.myBookmarklet = function() {
-			if ($("#trayframe").length == 0) {
+			if (jQuery("#trayframe").length == 0) {
 				if(top.frames["kbox"])
-					$("html").append(p);
+					jQuery("html").append(p);
 				else {
-					$("body").append(p);
+					jQuery("body").append(p);
 				}
-					$("#trayframe_veil").fadeIn(750);
+					jQuery("#trayframe_veil").fadeIn(750);
 				}
-			$("#trayframe_veil").click(function(event){
-				$("#trayframe_veil").fadeOut(750);
-				$("#trayframe iframe").slideUp(500);
-				setTimeout("$('#trayframe').remove()", 750);
+			jQuery("#trayframe_veil").click(function(event){
+				jQuery("#trayframe_veil").fadeOut(750);
+				jQuery("#trayframe iframe").slideUp(500);
+				setTimeout("jQuery('#trayframe').remove()", 750);
 			});
 			function receiveMessage(event){
   				if (event.origin !== "https://lxphpdev01.pugetsound.edu")
     				return;
 				$("#trayframe_veil").fadeOut(750);
 				$("#trayframe iframe").slideUp(500);
-				setTimeout("$('#trayframe').remove()", 750);
+				setTimeout("jQuery('#trayframe').remove()", 750);
 			}
 			window.addEventListener("message", receiveMessage, false);
 		})();

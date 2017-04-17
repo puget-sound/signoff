@@ -164,7 +164,7 @@ $fileQueryResult = $fileQuery->fetch_array(MYSQLI_ASSOC);
           </tr>
           <tr>
             <td style='padding: 3px;'><strong>Work Summary:</strong></td>
-            <td style='padding: 3px;'><?php echo(urldecode($result['sumWorkCompleted'])); ?></td>
+            <td style='padding: 3px;'><?php echo(nl2br(urldecode($result['sumWorkCompleted']))); ?></td>
           </tr>
         </table>
         </div>
@@ -179,7 +179,7 @@ $fileQueryResult = $fileQuery->fetch_array(MYSQLI_ASSOC);
           if ($result['proofTesting'] == "") {
             echo("<em>Sign-off is still pending or testing is incomplete.</em>");
           } else {
-            echo(urldecode($result['proofTesting']));
+            echo(nl2br(urldecode($result['proofTesting'])));
           }
           ?>
           </p>
