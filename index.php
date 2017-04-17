@@ -112,7 +112,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
               <ul class="dropdown-menu" role="menu">
                 <li class="dropdown-header">Actions</li>
                 <li><a href="#" onclick="refreshView();"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>&nbsp;&nbsp;Request Dashboard</a></li>
-                <li><a href="#" data-target='#newRequestModal' data-toggle='modal'><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;&nbsp;New Sign-off Request</a></li>
+                <li><a href="#" data-target='#requestModal' data-toggle='modal'><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;&nbsp;New Sign-off Request</a></li>
                 <li class="divider"></li>
                 <li class="dropdown-header">Management</li>
                 <li><a href="#" data-target='#manageProjectOwners' data-toggle='modal'><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>&nbsp;&nbsp;Project Owners</a></li>
@@ -126,7 +126,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
           </ul>
           <ul class="nav navbar-nav navbar-right">
               <li>
-                <a href="#" data-target='#newRequestModal' data-toggle='modal'><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;&nbsp;New Sign-off Request</a>
+                <a href="#" data-target='#requestModal' data-toggle='modal'><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;&nbsp;New Sign-off Request</a>
               </li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -211,7 +211,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
   <?php } ?>
     <!-- End Requests Panel -->
     <!-- Begin New Request Form -->
-    <div class='modal fade' role='dialog' id='newRequestModal'>
+    <div class='modal fade' role='dialog' id='requestModal'>
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -245,7 +245,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
             </div>
             <div id='soundNetGroup'>
                 <div class="form-group">
-                  <label for="projectNumber" class="col-sm-4 control-label">Project ID</label>
+                  <label for="projectNumber" class="col-sm-4 control-label">Project ID *</label>
                   <div class="col-sm-8">
                     <input style="width: 100px;"type="text" class="form-control" id="projectNumber" placeholder="P0100">
                   </div>
@@ -493,7 +493,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
 
 
     <!-- Begin Edit Request Modal Request -->
-    <div class='modal fade' role='dialog' id='editRequestModal'>
+    <div class='modal fade' role='dialog' id='requestModalEdit'>
       <div style="display: none;" id='editRequestId'></div>
       <div class="modal-dialog">
         <div class="modal-content">
@@ -502,7 +502,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
             <h4 class="modal-title" id="myModalLabel">Edit Request</h4>
           </div>
           <div class="modal-body">
-          <div style="display: none;" class="alert alert-danger" id="editRequestErrorValidate" role="alert"></div>
+          <div style="display: none;" class="alert alert-danger" id="errorValidateEdit" role="alert"></div>
           <form class='form-horizontal'>
             <div class="form-group">
               <label for="projectOwnerSelect" class="col-sm-4 control-label">Type</label>
@@ -528,7 +528,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
             </div>
             <div id='soundNetGroupEdit'>
                 <div class="form-group">
-                  <label for="projectNumber" class="col-sm-4 control-label">Project ID</label>
+                  <label for="projectNumber" class="col-sm-4 control-label">Project ID *</label>
                   <div class="col-sm-8">
                     <input style="width: 100px;"type="text" class="form-control" id="projectNumberEdit" placeholder="P0100">
                   </div>
@@ -558,7 +558,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
                 <input style="width: 250px;"type="text" class="form-control" id="projectNameEdit" placeholder="SoundNet Project or Ticket Name">
               </div>
             </div>
-
+            <div id='hidedetailfieldsEdit'>
             <div class="form-group">
               <label for="appDesignerProjects" class="col-sm-4 control-label">App Designer Projects</label>
               <div class="col-sm-8">
@@ -577,7 +577,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
                 <input style="width: 250px;"type="text" class="form-control" id="otherObjectsEdit" placeholder="If applicable, separate by commas.">
               </div>
             </div>
-
+          </div>
             <div class="form-group">
               <label for="projectOwnerSelect" class="col-sm-4 control-label">Project Owner *</label>
               <div class="col-sm-8">
@@ -626,7 +626,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
             <div class="form-group">
               <label for="appDesignerProjects" class="col-sm-4 control-label">Author Full Name</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="authorFullNameEdit" placeholder="username">
+                    <input type="text" class="form-control" id="authorFullNameEdit" placeholder="username" readonly/>
                 </div>
             </div>
 
