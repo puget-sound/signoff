@@ -31,8 +31,10 @@ if ($filterDateRange == "all") {
 
 if ($filterRec == "showrec") {
 	$filterRec = "LIKE '%'";
-} else if ($filterRec = "hiderec") {
+} else if ($filterRec == "hiderec") {
 	$filterRec = "LIKE 'Pending'";
+} else if ($filterRec == "hidepend") {
+	$filterRec = "LIKE 'Received'";
 }
 
 require_once('connect.php');

@@ -1,6 +1,5 @@
 (function(){
 
-	// the minimum version of jQuery we want
 		var v = "",
 		u = "";
 	if(top.frames["kbox"]) {v = top.frames["kbox"].document.getElementsByClassName('k-main')[0].getElementsByTagName('h1')[0].innerHTML;
@@ -10,7 +9,7 @@ v = document.getElementsByClassName('k-main')[0].getElementsByTagName('h1')[0].i
 u = document.getElementById('edit-title').innerText}
 var p = "<div id='trayframe' style='position:fixed;z-index:1050;'>\
 	<div id='trayframe_veil'></div>\
-	<iframe src='https://lxphpdev01.pugetsound.edu/signoff/create.php?ticketNumber="+v+"&projectTitle="+u+"' onload=\"jQuery('#trayframe iframe').slideDown(500);\">Enable iFrames.</iframe>\
+	<iframe src='https://lxphpdev01.pugetsound.edu/signoff/create.php?ticketNumber="+v+"&projectTitle="+u+"' onload=\"jQuery('#trayframe iframe').slideDown(500);\">Enable iFrames</iframe>\
 	<style type='text/css'>\
 		#trayframe_veil { display: none; position: fixed; width: 100%; height: 100%; top: 0; left: 0; background-color: rgba(255,255,255,.25); cursor: pointer; z-index: 900; }\
 		#trayframe iframe { display: none; position: fixed; top: 0; left: 0; width: 100%; height:417px; z-index: 999; border:none; margin: 0; }\
@@ -32,7 +31,6 @@ if (window.jQuery === undefined) {
 } else {
 	initMyBookmarklet();
 }
-
 
 	function initMyBookmarklet() {
 		(window.myBookmarklet = function() {

@@ -163,6 +163,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
               <select class='selectpicker' id='filterRec'>
                 <option value='showrec'>Show All Requests</option>
                 <option value='hiderec'>Hide Received Requests</option>
+                <option value='hidepend'>Hide Pending Requests</option>
               </select>
             </div>
             <button type='button' onclick='loadProjectRequests();' class='btn btn-primary'>Find</button>
