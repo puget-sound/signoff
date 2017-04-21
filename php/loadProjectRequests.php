@@ -4,11 +4,12 @@
 require_once 'KLogger.php';
 $log = KLogger::instance('../log/');
 $myname = basename(__FILE__, '.php') . ".php";
-
+$whoami = $_COOKIE['SignOffAdminUser'];
 
 $filterRType = $_GET['filterRType'];
 $filterDateRange = $_GET['filterDateRange'];
 $filterRec = $_GET['filterRec'];
+$filterAuthor = $_GET['filterAuthor'];
 
 //Translate input values into SQL
 if ($filterRType == "all") {
@@ -37,6 +38,13 @@ if ($filterRec == "showrec") {
 	$filterRec = "LIKE 'Received'";
 }
 
+if($filterAuthor == "true") {
+	$filterAuthor = "LIKE '$whoami'";
+}
+else {
+	$filterAuthor = "LIKE '%'";
+}
+
 require_once('connect.php');
 $conn = db_connect();
 if (!$conn) {
@@ -46,6 +54,7 @@ $query = $conn->query("SELECT * FROM signoff_project_requests
  WHERE (typeOfWork LIKE '$filterRType')
  AND (requestDate " . $filterDateRange . ")
  AND (status " . $filterRec . ")
+ AND (author " . $filterAuthor . ")
  ORDER BY requestDate DESC");
 $push = array();
 while ($result = $query->fetch_array(MYSQLI_ASSOC)) {
@@ -57,7 +66,7 @@ while ($result = $query->fetch_array(MYSQLI_ASSOC)) {
 	 $result['authorFullName'] = urldecode($result['authorFullName']);
 	 array_push($push, $result);
 }
-$whoami = $_COOKIE['SignOffAdminUser'];
+
 $log->logInfo("$myname | $whoami Successfully Queried Project Requests. Pushing Results.");
 echo(json_encode($push));
 

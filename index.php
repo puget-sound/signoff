@@ -166,8 +166,12 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
                 <option value='hidepend'>Hide Pending Requests</option>
               </select>
             </div>
-            <button type='button' onclick='loadProjectRequests();' class='btn btn-primary'>Find</button>
-            <button type='button' onclick='resetProjectRequests();' class='btn btn-warning'>Reset</button>
+            <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="filterAuthor"> Show my requests only
+                </label>
+              </div>
+            <button type='button' onclick='resetProjectRequests();' class='btn btn-warning btn-sm pull-right'>Reset</button>
           </form>
         </div>
       </div>

@@ -350,6 +350,7 @@ function resetProjectRequests() {
 	$("#filterDateRange").selectpicker("refresh");
 	$("#filterRec").val('showrec');
 	$("#filterRec").selectpicker("refresh");
+	$("#filterAuthor").prop('checked', false);
 	loadProjectRequests();
 }
 
@@ -362,6 +363,7 @@ function loadProjectRequests() {
 		filterRType: $('#filterRType').val(),
 		filterDateRange: $('#filterDateRange').val(),
 		filterRec: $("#filterRec").val(),
+		filterAuthor: $("#filterAuthor").is(':checked'),
 	}, function(data) {
 		$('#projectRequestTableBody').html("");
 		var html = "";
@@ -418,15 +420,7 @@ function loadProjectRequests() {
 	    	html += "<li><a href='#' data-toggle='modal' data-requestid=" + data[i].requestId + " data-target='#deleteRequestModal'><span class='glyphicon glyphicon-trash'></span>&nbsp;&nbsp;Delete</a></li>";
 	    	}
 	    	html += "</ul></div>";
-	    	//html += "<a target='_blank' href='view.php?requestId="+ data[i].requestId +"' type='button' class='btn btn-default btn-xs' aria-label='View'>";
-	    	//html += "<span class='glyphicon glyphicon-search' aria-hidden='true'></span>";
-	    	//html += "</a>";
-	    	//html += "<button class='btn btn-default btn-xs' data-toggle='modal' data-target='#copyLinkModal' data-requestId=" + data[i].requestId + "><span class='glyphicon glyphicon-export' aria-hidden='true'></span></button>"
-	    	//if (data[i].status == "Pending") {
-	    		//html += "<button type='button' class='btn btn-default btn-xs' aria-label='Delete' data-toggle='modal' data-requestid=" + data[i].requestId + " data-target='#deleteRequestModal'>";
-	    		//html += "<span class='glyphicon glyphicon-trash' aria-hidden='true'></span>";
-	    		//html += "</button>";
-	    	//}
+
 	    	html += "</td></tr>";
 		}
 		$('#projectRequestTableBody').append(html);
@@ -481,6 +475,9 @@ $(document).ready(function() {
 			changeWorkType("Edit", typeofWork);
   	});
 
+		$("#filterRType, #filterDateRange, #filterRec, #filterAuthor").change(function() {
+			loadProjectRequests()
+		});
 
 	(function ($) {
         $('#filter').keyup(function () {
