@@ -50,8 +50,8 @@ if (window.jQuery === undefined) {
 			function receiveMessage(event){
   				if (event.origin !== "https://lxphpdev01.pugetsound.edu")
     				return;
-				$("#trayframe_veil").fadeOut(750);
-				$("#trayframe iframe").slideUp(500);
+				jQuery("#trayframe_veil").fadeOut(750);
+				jQuery("#trayframe iframe").slideUp(500);
 				setTimeout("jQuery('#trayframe').remove()", 750);
 			}
 			window.addEventListener("message", receiveMessage, false);

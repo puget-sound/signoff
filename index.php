@@ -119,6 +119,9 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
                 <li><a href="#" data-target='#userManagement' data-toggle='modal'><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;User Administration</a></li>
                 <li><a href="chartjsExample.html"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;&nbsp;Analytics Dashboard</a></li>
                 <li class="divider"></li>
+                <li class="dropdown-header">Tools</li>
+                <li><a href='#' data-toggle='modal' data-target='#KACEBookmarkletModal'><span class='glyphicon glyphicon-star-empty'></span>&nbsp;&nbsp;KACE Bookmarklet</a></li>
+                <li class="divider"></li>
                 <li class="dropdown-header">Account</li>
                 <li><a href="?logout"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;&nbsp;Sign Out</a></li>
               </ul>
@@ -209,11 +212,6 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
         </table>
       </div>
     </div>
-    <div><?php $bkmrklt_author =  $_COOKIE['SignOffAdminUser']; ?>
-      <?php if($bkmrklt_author == 'acain' || $bkmrklt_author == 'ksharma' || $bkmrklt_author == 'argoff') { ?>
-    <a id="bookmarklet" class="btn btn-success btn-lg" href="javascript:(function()%7B!function()%7Bfunction%20e()%7B(window.myBookmarklet%3Dfunction()%7Bfunction%20e(e)%7B%22https%3A%2F%2Flxphpdev01.pugetsound.edu%22%3D%3D%3De.origin%26%26(%24(%22%23trayframe_veil%22).fadeOut(750)%2C%24(%22%23trayframe%20iframe%22).slideUp(500)%2CsetTimeout(%22jQuery('%23trayframe').remove()%22%2C750))%7D0%3D%3DjQuery(%22%23trayframe%22).length%26%26(top.frames.kbox%3FjQuery(%22html%22).append(r)%3AjQuery(%22body%22).append(r)%2CjQuery(%22%23trayframe_veil%22).fadeIn(750))%2CjQuery(%22%23trayframe_veil%22).click(function(e)%7BjQuery(%22%23trayframe_veil%22).fadeOut(750)%2CjQuery(%22%23trayframe%20iframe%22).slideUp(500)%2CsetTimeout(%22jQuery('%23trayframe').remove()%22%2C750)%7D)%2Cwindow.addEventListener(%22message%22%2Ce%2C!1)%7D)()%7Dvar%20t%3D%22%22%2Ca%3D%22%22%3Btop.frames.kbox%3F(t%3Dtop.frames.kbox.document.getElementsByClassName(%22k-main%22)%5B0%5D.getElementsByTagName(%22h1%22)%5B0%5D.innerHTML%2Ca%3Dtop.frames.kbox.document.getElementById(%22edit-title%22).innerText)%3A(t%3Ddocument.getElementsByClassName(%22k-main%22)%5B0%5D.getElementsByTagName(%22h1%22)%5B0%5D.innerHTML%2Ca%3Ddocument.getElementById(%22edit-title%22).innerText)%3Bvar%20r%3D%22%3Cdiv%20id%3D'trayframe'%20style%3D'position%3Afixed%3Bz-index%3A1050%3B'%3E%09%3Cdiv%20id%3D'trayframe_veil'%3E%3C%2Fdiv%3E%09%3Ciframe%20src%3D'https%3A%2F%2Flxphpdev01.pugetsound.edu%2Fsignoff%2Fcreate.php%3FticketNumber%3D%22%2Bt%2B%22%26author=<?php echo $bkmrklt_author;?>%26projectTitle%3D%22%2Ba%2B%22'%20onload%3D%5C%22jQuery('%23trayframe%20iframe').slideDown(500)%3B%5C%22%3EEnable%20iFrames.%3C%2Fiframe%3E%09%3Cstyle%20type%3D'text%2Fcss'%3E%09%09%23trayframe_veil%20%7B%20display%3A%20none%3B%20position%3A%20fixed%3B%20width%3A%20100%25%3B%20height%3A%20100%25%3B%20top%3A%200%3B%20left%3A%200%3B%20background-color%3A%20rgba(255%2C255%2C255%2C.25)%3B%20cursor%3A%20pointer%3B%20z-index%3A%20900%3B%20%7D%09%09%23trayframe%20iframe%20%7B%20display%3A%20none%3B%20position%3A%20fixed%3B%20top%3A%200%3B%20left%3A%200%3B%20width%3A%20100%25%3B%20height%3A417px%3B%20z-index%3A%20999%3B%20border%3Anone%3B%20margin%3A%200%3B%20%7D%09%3C%2Fstyle%3E%3C%2Fdiv%3E%22%3Bif(top.frames.kbox%26%26document.getElementsByTagName(%22html%22)%5B0%5D.appendChild(document.createElement(%22body%22))%2Cvoid%200%3D%3D%3Dwindow.jQuery)%7Bvar%20i%3D!1%2Cn%3Ddocument.createElement(%22script%22)%3Bn.src%3D%22https%3A%2F%2Fajax.googleapis.com%2Fajax%2Flibs%2Fjquery%2F1.3.2%2Fjquery.min.js%22%2Cn.onload%3Dn.onreadystatechange%3Dfunction()%7Bi%7C%7Cthis.readyState%26%26%22loaded%22!%3Dthis.readyState%26%26%22complete%22!%3Dthis.readyState%7C%7C(i%3D!0%2Ce())%7D%2Cdocument.getElementsByTagName(%22head%22)%5B0%5D.appendChild(n)%7Delse%20e()%7D()%7D)()">Create Signoff</a> <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Drag this button into your browser toolbar</div>
-  </div>
-  <?php } ?>
     <!-- End Requests Panel -->
     <!-- Begin New Request Form -->
     <div class='modal fade' role='dialog' id='requestModal'>
@@ -653,6 +651,27 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
       </div>
     </div>
     <!-- End New Request Form -->
+    <!-- KACE Bookmarklet modal-->
+    <div class='modal fade' role='dialog' id='KACEBookmarkletModal'>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">KACE Bookmarklet</h4>
+          </div>
+          <div class="modal-body">
+            <div><?php $bkmrklt_author =  $_COOKIE['SignOffAdminUser']; ?>
+            <a id="bookmarklet" class="btn btn-success btn-lg" href="javascript:(function()%7B!function()%7Bfunction%20e()%7B(window.myBookmarklet%3Dfunction()%7Bfunction%20e(e)%7B%22https%3A%2F%2Flxphpdev01.pugetsound.edu%22%3D%3D%3De.origin%26%26(jQuery(%22%23trayframe_veil%22).fadeOut(750)%2CjQuery(%22%23trayframe%20iframe%22).slideUp(500)%2CsetTimeout(%22jQuery('%23trayframe').remove()%22%2C750))%7D0%3D%3DjQuery(%22%23trayframe%22).length%26%26(top.frames.kbox%3FjQuery(%22html%22).append(r)%3AjQuery(%22body%22).append(r)%2CjQuery(%22%23trayframe_veil%22).fadeIn(750))%2CjQuery(%22%23trayframe_veil%22).click(function(e)%7BjQuery(%22%23trayframe_veil%22).fadeOut(750)%2CjQuery(%22%23trayframe%20iframe%22).slideUp(500)%2CsetTimeout(%22jQuery('%23trayframe').remove()%22%2C750)%7D)%2Cwindow.addEventListener(%22message%22%2Ce%2C!1)%7D)()%7Dvar%20t%3D%22%22%2Ca%3D%22%22%3Btop.frames.kbox%3F(t%3Dtop.frames.kbox.document.getElementsByClassName(%22k-main%22)%5B0%5D.getElementsByTagName(%22h1%22)%5B0%5D.innerHTML%2Ca%3Dtop.frames.kbox.document.getElementById(%22edit-title%22).innerText)%3A(t%3Ddocument.getElementsByClassName(%22k-main%22)%5B0%5D.getElementsByTagName(%22h1%22)%5B0%5D.innerHTML%2Ca%3Ddocument.getElementById(%22edit-title%22).innerText)%3Bvar%20r%3D%22%3Cdiv%20id%3D'trayframe'%20style%3D'position%3Afixed%3Bz-index%3A1050%3B'%3E%09%3Cdiv%20id%3D'trayframe_veil'%3E%3C%2Fdiv%3E%09%3Ciframe%20src%3D'https%3A%2F%2Flxphpdev01.pugetsound.edu%2Fsignoff%2Fcreate.php%3FticketNumber%3D%22%2Bt%2B%22%26author=<?php echo $bkmrklt_author;?>%26projectTitle%3D%22%2Ba%2B%22'%20onload%3D%5C%22jQuery('%23trayframe%20iframe').slideDown(500)%3B%5C%22%3EEnable%20iFrames.%3C%2Fiframe%3E%09%3Cstyle%20type%3D'text%2Fcss'%3E%09%09%23trayframe_veil%20%7B%20display%3A%20none%3B%20position%3A%20fixed%3B%20width%3A%20100%25%3B%20height%3A%20100%25%3B%20top%3A%200%3B%20left%3A%200%3B%20background-color%3A%20rgba(255%2C255%2C255%2C.25)%3B%20cursor%3A%20pointer%3B%20z-index%3A%20900%3B%20%7D%09%09%23trayframe%20iframe%20%7B%20display%3A%20none%3B%20position%3A%20fixed%3B%20top%3A%200%3B%20left%3A%200%3B%20width%3A%20100%25%3B%20height%3A417px%3B%20z-index%3A%20999%3B%20border%3Anone%3B%20margin%3A%200%3B%20%7D%09%3C%2Fstyle%3E%3C%2Fdiv%3E%22%3Bif(top.frames.kbox%26%26document.getElementsByTagName(%22html%22)%5B0%5D.appendChild(document.createElement(%22body%22))%2Cvoid%200%3D%3D%3Dwindow.jQuery)%7Bvar%20i%3D!1%2Cn%3Ddocument.createElement(%22script%22)%3Bn.src%3D%22https%3A%2F%2Fajax.googleapis.com%2Fajax%2Flibs%2Fjquery%2F1.3.2%2Fjquery.min.js%22%2Cn.onload%3Dn.onreadystatechange%3Dfunction()%7Bi%7C%7Cthis.readyState%26%26%22loaded%22!%3Dthis.readyState%26%26%22complete%22!%3Dthis.readyState%7C%7C(i%3D!0%2Ce())%7D%2Cdocument.getElementsByTagName(%22head%22)%5B0%5D.appendChild(n)%7Delse%20e()%7D()%7D)()">Create Signoff</a> <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Drag this button into your browser toolbar</div>
+            <br><br>
+            <p>Use this bookmarklet to create a sign-off request from a KACE ticket.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End link modal -->
 
 
     <!-- Bootstrap core JavaScript
