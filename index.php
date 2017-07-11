@@ -372,10 +372,10 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Delete Project Request</h4>
+            <h4 class="modal-title" id="myModalLabel">Delete Sign-off Request</h4>
           </div>
           <div class="modal-body">
-            <p>Are you sure you want to <strong>delete</strong> this project request?</p>
+            <p>Are you sure you want to <strong>delete</strong> this sign-off request?</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
