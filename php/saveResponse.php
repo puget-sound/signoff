@@ -49,12 +49,13 @@ if ($query) {
 	}
 	$message .= "<br><br>To view the full request, follow this link: <a href='http://signoff.pugetsound.edu/view.php?requestId=" . $emailQuery['requestId'] . "'>http://signoff.pugetsound.edu/view.php?requestId=" . $emailQuery['requestId'] . "</a><br><br>";
 	$message .= "</div>";
+	$body = rtrim(chunk_split(base64_encode($message)));
 	$headers  = 'MIME-Version: 1.0' . "\r\n";
 	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 	$headers .= 'From: TS Project Management Office <tsprojects@pugetsound.edu>' . "\r\n" .
 	'Reply-To: tsprojects@pugetsound.edu' . "\r\n" .
 	'X-Mailer: PHP/' . phpversion();
-	mail($to, $subject, $message, $headers);
+	mail($to, $subject, $body, $headers);
 	$log->logInfo("$myname | E-mail sent to " . $emailQuery['author'] . "@pugetsound.edu with project request update.");
 	header("Location: ../overview.php?requestId=$requestId&action=submit");
 }
