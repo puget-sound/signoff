@@ -51,7 +51,8 @@ if ($query) {
 	$message .= "</div>";
 	$body = rtrim(chunk_split(base64_encode($message)));
 	$headers  = 'MIME-Version: 1.0' . "\r\n";
-	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+	$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+	$headers .= 'Content-Transfer-Encoding: base64' . "\r\n";
 	$headers .= 'From: TS Project Management Office <tsprojects@pugetsound.edu>' . "\r\n" .
 	'Reply-To: tsprojects@pugetsound.edu' . "\r\n" .
 	'X-Mailer: PHP/' . phpversion();
