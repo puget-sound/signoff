@@ -9,4 +9,8 @@ $LDAP_AUTHNAME = 'cn=LDAP Authenticator,cn=Users,dc=XXXXXXXXXX,dc=edu';
 $LDAP_PASS = 'LDAP password';
 $LDAP_SERVERS = "ldap://XXXXXX.XXX ldap://XXXXXX.XXX";
 
+$API_TOKEN = "atokengoeshere";
+
+$BOOKMARKLET_SERVER = "servername";
+
 ?>
