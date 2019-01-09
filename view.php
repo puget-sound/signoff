@@ -195,7 +195,7 @@ $fileQueryResult = $fileQuery->fetch_array(MYSQLI_ASSOC);
           if ($result['additionalComments'] == "") {
             echo("<em>None provided.</em>");
           } else {
-            echo(urldecode($result['additionalComments']));
+            echo(nl2br(urldecode($result['additionalComments'])));
           }
           ?>
           </p>
