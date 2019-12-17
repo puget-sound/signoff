@@ -89,7 +89,6 @@ if ($query->num_rows > 0) {
       <div class="panel panel-default">
         <div class="panel-heading"><h3 class="panel-title">Request for Sign-off (#<?php echo(urldecode($result["requestId"])); ?>)</h3></div>
         <div class="panel-body">
-          <div style="display: none;" class="alert alert-danger" id="testingError" role="alert"></div>
           <table>
             <tr>
               <td style='padding: 3px;'><strong>Type:</strong></td>
@@ -161,7 +160,7 @@ if ($query->num_rows > 0) {
       <form method='get' action='php/saveResponse.php'>
         <input type="hidden" name="requestId" value=<?php echo("'" . $result['requestId'] . "'") ?>>
         <input type="hidden" id="typeOfWorkField" name="typeOfWork" value=<?php echo("'" . $result['typeOfWork'] . "'") ?>>
-      <div class="panel panel-default" <?php if ($result['typeOfWork'] == 'req') {echo("style='display: none;'");} ?>>
+      <div id="testing-info" class="panel panel-default" <?php if ($result['typeOfWork'] == 'req') {echo("style='display: none;'");} ?>>
         <div class="panel-heading"><h3 class="panel-title">Testing Information</h3></div>
         <div class="panel-body">
           <?php
@@ -186,9 +185,10 @@ if ($query->num_rows > 0) {
     </div>
     <div class='row'>
       <div class="panel panel-default">
-        <div class="panel-heading"><h3 class="panel-title">Sign-off (<?php echo(urldecode($result['reqFullName'])); ?>)</h3></div>
+        <div class="panel-heading"><h3 class="panel-title">Sign-off from <strong><?php echo(urldecode($result['reqFullName'])); ?></strong></h3></div>
         <div class="panel-body">
           <div style="display: none;" class="alert alert-danger" id="signOffError" role="alert"></div>
+          <div style="display: none;" class="alert alert-danger" id="testingError" role="alert"></div>
           <p><strong>I have tested and verified this project is working as expected.</strong></p>
           <div class="radio">
             <label>
@@ -254,7 +254,7 @@ if ($query->num_rows > 0) {
         $("#signOffError").hide();
         $("#testingError").hide();
         if ($("#testLink").val() == "" || $("#testText").val() == "" && $("#typeOfWorkField").val() != "req" ) {
-          $("#testingError").html("Oops! <strong>Testing</strong> verification is missing. Please complete.");
+          $("#testingError").html("The <strong>Testing Information</strong> section is required. Please complete.");
           $("#testingError").show();
           return false;
         }

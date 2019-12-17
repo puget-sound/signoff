@@ -88,7 +88,6 @@ if ($query->num_rows > 0) {
       <div class="panel panel-default">
         <div class="panel-heading"><h3 class="panel-title">Request for Sign-off (#<?php echo(urldecode($result["requestId"])); ?>)</h3></div>
         <div class="panel-body">
-          <div style="display: none;" class="alert alert-danger" id="testingError" role="alert"></div>
           <table>
             <tr>
               <td style='padding: 3px;'><strong>Type:</strong></td>
@@ -188,6 +187,7 @@ if ($query->num_rows > 0) {
         <div class="panel-heading"><h3 class="panel-title">Sign-off (<?php echo(urldecode($result['reqFullName'])); ?>)</h3></div>
         <div class="panel-body">
           <div style="display: none;" class="alert alert-danger" id="signOffError" role="alert"></div>
+          <div style="display: none;" class="alert alert-danger" id="testingError" role="alert"></div>
           <p><strong>I have tested and verified this project is working as expected.</strong></p>
           <div class="radio">
             <label>
