@@ -1,0 +1,10 @@
+.up-right-desktop {
+  text-align: right;
+}
+
+
+@media (max-width: 768px) { 
+  .up-right-desktop {
+    text-align: left;
+  }
+}

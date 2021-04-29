@@ -230,7 +230,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
               <div class="col-sm-8">
                 <select id='typeOfWork' class="selectpicker" title="Please Select One...">
                   <option value='1' data-hidden="true"></option>
-                  <option value='project'>Project (SoundNet, LP)</option>
+                  <option value='project'>Project</option>
                   <option value='ticket'>KACE Ticket</option>
                   <option value='req'>Requirements &amp; Docs</option>
                 </select>
@@ -255,9 +255,9 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="projectNumber" class="col-sm-4 control-label">SoundNet Folder Link</label>
+                  <label for="projectNumber" class="col-sm-4 control-label">Google Drive Folder Link</label>
                   <div class="col-sm-8">
-                    <input style="width: 300px;"type="text" class="form-control" id="soundNetLink" placeholder="Paste SoundNet Link here">
+                    <input style="width: 300px;"type="text" class="form-control" id="soundNetLink" placeholder="Paste Google Drive Link here">
                   </div>
                 </div>
                 <div class="form-group">
@@ -276,7 +276,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
            <div class="form-group">
               <label for="projectName" class="col-sm-4 control-label">Project Name *</label>
               <div class="col-sm-8">
-                <input style="width: 250px;"type="text" class="form-control" id="projectName" placeholder="SoundNet Project or Ticket Name">
+                <input style="width: 250px;"type="text" class="form-control" id="projectName" placeholder="Project or Ticket Name">
               </div>
             </div>
             <div id='hidedetailfields'>
@@ -472,7 +472,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Forward Project</h4>
+            <h4 class="modal-title" id="myModalLabel">Add Approver</h4>
           </div>
           <div class="modal-body">
             <div style="display: none;" class="alert alert-danger" id="addRepresentativeValidate" role="alert"></div>
@@ -513,7 +513,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
               <div class="col-sm-8">
                 <select id='typeOfWorkEdit' class="selectpicker" title="Please Select One...">
                   <option value='1' data-hidden="true"></option>
-                  <option value='project'>Project (SoundNet, LP)</option>
+                  <option value='project'>Project</option>
                   <option value='ticket'>KACE Ticket</option>
                   <option value='req'>Requirements &amp; Docs</option>
                 </select>
@@ -538,9 +538,9 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="projectNumber" class="col-sm-4 control-label">SoundNet Folder Link</label>
+                  <label for="projectNumber" class="col-sm-4 control-label">Google Drive Folder Link</label>
                   <div class="col-sm-8">
-                    <input style="width: 300px;"type="text" class="form-control" id="soundNetLinkEdit" placeholder="Paste SoundNet Link here">
+                    <input style="width: 300px;"type="text" class="form-control" id="soundNetLinkEdit" placeholder="Paste Google Drive Link here">
                   </div>
                 </div>
                 <div class="form-group">
@@ -559,7 +559,7 @@ $query = $conn->query("SELECT * FROM signoff_project_admins WHERE username = '$u
            <div class="form-group">
               <label for="projectName" class="col-sm-4 control-label">Project Name *</label>
               <div class="col-sm-8">
-                <input style="width: 250px;"type="text" class="form-control" id="projectNameEdit" placeholder="SoundNet Project or Ticket Name">
+                <input style="width: 250px;"type="text" class="form-control" id="projectNameEdit" placeholder="Project or Ticket Name">
               </div>
             </div>
             <div id='hidedetailfieldsEdit'>

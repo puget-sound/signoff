@@ -5,3 +5,5 @@ log
 cas
 .DS_Store
 *.sql
+/vendor
+composer.phar

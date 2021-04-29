@@ -58,10 +58,9 @@ if ($query->num_rows > 0) {
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap theme -->
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- Bootstrap select theme -->
     <link href="css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <link rel="icon" href="images/grey-favicon.png" type="image/png">
 
     <!-- Custom styles for this template -->
@@ -81,93 +80,88 @@ if ($query->num_rows > 0) {
       padding-bottom: 10px;
     }
     </style>
-    <div class="container" style='max-width: 800px;'>
+    <div class="container" style='max-width: 860px;'>
+      <div class='row'>
+       <p style='text-align: center;'><img src='images/PMOLogo.jpg' height=100/></p>
+      </div>
+      <div class='row'>
+        <div class='col-md-6'>
+        <h4>Request for Sign-off</h4>
+        <p class="text-muted" style="margin-top:-6px;margin-bottom:8px;">Request #<?php echo(urldecode($result["requestId"])); ?></p>
+      </div>
+      <div class='col-md-6'>
+        <p class="text-muted up-right-desktop" style="padding-top:6px;font-size:13px;">Requested on <strong><?php echo date('M j Y g:i A', strtotime($result['requestDate'])); ?></strong></p>
+      </div>
+      </div>
      <div class='row'>
-      <p style='text-align: center;'><img src='images/PMOLogo.jpg' height=100/></p>
-     </div>
-     <div class='row'>
-      <div class="panel panel-default">
-        <div class="panel-heading"><h3 class="panel-title">Request for Sign-off (#<?php echo(urldecode($result["requestId"])); ?>)</h3></div>
-        <div class="panel-body">
-          <table>
-            <tr>
-              <td style='padding: 3px;'><strong>Type:</strong></td>
-              <td style='padding: 3px;'>  <?php
+       <div class='col-md-12'>
+       <div class="panel panel-default">
+  <div class="panel-body">
+       <h3 style="margin-top:4px;"><?php echo(urldecode($result['projectName'])); ?></h3>
 
-                if ($result['typeOfWork'] == 'project') {
-                  echo ("Project");
-                }
-                if ($result['typeOfWork'] == 'ticket') {
-                  echo ("Ticket (KACE)");
-                }
-                if ($result['typeOfWork'] == "req") {
-                  echo ("Requirements or Documentation");
-                }
-                ?>
-                </td>
-            <tr>
-            <tr>
-              <td style='padding: 3px;'><strong>Project Name:</strong></td>
-              <td style='padding: 3px;'><?php echo(urldecode($result['projectName'])); ?></td>
-            </tr>
-            <tr>
-              <td style='padding: 3px;'><strong>Project Owner:</strong></td>
-              <td style='padding: 3px;'><?php echo(urldecode($result['projectOwner'])); ?></td>
-            </tr>
-            <tr>
-            <?php
-              if ($result['typeOfWork'] == "project") {
-                echo("<td style='padding: 3px;'><strong>Project ID:</strong></td>");
-                echo("<td style='padding: 3px;'>" . urldecode($result['projectId']) . "</td>");
-              }
-              if ($result['typeOfWork'] == "ticket") {
-                echo("<td style='padding: 3px;'><strong>Ticket:</strong></td>");
-                echo("<td style='padding: 3px;'>TICK:" . urldecode($result['ticketNumber']) . "</td>");
-              }
-            ?>
-            </tr>
-            <tr>
-              <td style='padding: 3px;'><strong>Sprint:</strong></td>
-              <td style='padding: 3px;'><?php echo(urldecode($result['sprint'])); ?></td>
-            </tr>
-            <tr>
-              <td style='padding: 3px;'><strong>Requested By:</strong></td>
-              <td style='padding: 3px;'><?php echo(urldecode($result['authorFullName'])); ?></td>
-            </tr>
-            <tr>
-              <td style='padding: 3px;'><strong>Sent To:</strong></td>
-              <td style='padding: 3px;'><?php echo(urldecode($result['reqFullName'])); ?></td>
-            </tr>
-            <tr>
-              <td style='padding: 3px;'><strong>Request Date:</strong></td>
-              <td style='padding: 3px;'><?php echo date('M j Y g:i A', strtotime($result['requestDate'])); ?></td>
-            </tr>
-          </table>
+       <div class='row'>
+         <div class='col-md-7'>
+           <p><strong style="width:110px;display:inline-block;">Project Owner</strong><?php echo(urldecode($result['projectOwner'])); ?><p>
+           <p><strong style="width:110px;display:inline-block;">Type</strong><?php
+
+             if ($result['typeOfWork'] == 'project') {
+               echo ("Project");
+             }
+             if ($result['typeOfWork'] == 'ticket') {
+               echo ("Ticket (KACE)");
+             }
+             if ($result['typeOfWork'] == "req") {
+               echo ("Requirements or Documentation");
+             }
+             ?>
+             <p>
+               <p><strong style="width:110px;display:inline-block;">
+           <?php
+             if ($result['typeOfWork'] == "project") {
+               echo("Project ID</strong>");
+               echo(urldecode($result['projectId']) . "</p>");
+             }
+             if ($result['typeOfWork'] == "ticket") {
+               echo("Ticket</strong>");
+               echo("TICK:" . urldecode($result['ticketNumber']) . "</p>");
+             }
+           ?></p>
+           <p <?php if ($result['sprint'] === '') {echo("style='display: none;'");} ?>>
+             <strong style="width:110px;display:inline-block;">Sprint</strong><?php echo(urldecode($result['sprint'])); ?></p>
+
+         </div>
+         <div class='col-md-5'>
+           <p><strong style="width:110px;display:inline-block;">Sent To</strong><?php echo(urldecode($result['reqFullName'])); ?></p>
+
+           <p><strong style="width:110px;display:inline-block;">Requested By</strong><?php echo(urldecode($result['authorFullName'])); ?></p>
+
+
+</div>
+</div>
+          <div <?php if ($result['typeOfWork'] == 'req') {echo("style='display: none;'");} ?>>
+            <hr>
+          <h4 style="margin-top:14px;">Summary of Work Completed</h4>
+            <p>
+              <?php echo(urldecode($result['sumWorkCompleted'])); ?>
+            </p>
+          </div>
         </div>
       </div>
     </div>
-     <div class='row' <?php if ($result['typeOfWork'] == 'req') {echo("style='display: none;'");} ?>>
-      <div class="panel panel-default">
-        <div class="panel-heading"><h3 class="panel-title">Summary of Work Completed</h3></div>
-        <div class="panel-body">
-          <p style="padding: 15px;">
-            <?php echo(urldecode($result['sumWorkCompleted'])); ?>
-          </p>
-        </div>
-      </div>
     </div>
     <div class='row'>
+      <div class='col-md-12'>
       <form method='get' action='php/saveResponse.php'>
         <input type="hidden" name="requestId" value=<?php echo("'" . $result['requestId'] . "'") ?>>
         <input type="hidden" id="typeOfWorkField" name="typeOfWork" value=<?php echo("'" . $result['typeOfWork'] . "'") ?>>
-      <div id="testing-info" class="panel panel-default" <?php if ($result['typeOfWork'] == 'req') {echo("style='display: none;'");} ?>>
-        <div class="panel-heading"><h3 class="panel-title">Testing Information</h3></div>
+      <div id="testing-info" class="panel panel-info" <?php if ($result['typeOfWork'] == 'req') {echo("style='display: none;'");} ?>>
+        <div class="panel-heading"><h3 class="panel-title">Testing Information *</h3></div>
         <div class="panel-body">
           <?php
           if ($result['testingType'] == "link") {
               echo("<input type='text' name='link' id='testLink' class='form-control' placeholder='Paste link to Testing Documentation here.'/>");
           }
-          if ($result['testingType'] == "text") {
+          if ($result['testingType'] == "text" || $result['testingType'] == "") {
               echo("<textarea class='form-control' name='text' id='testText' rows=4 placeholder='Please briefly describe your testing process and procedure.'></textarea>");
           }
           ?>
@@ -175,7 +169,9 @@ if ($query->num_rows > 0) {
         </div>
       </div>
     </div>
+    </div>
      <div class='row'>
+       <div class='col-md-12'>
       <div class="panel panel-default">
         <div class="panel-heading"><h3 class="panel-title">Additional Comments</h3></div>
         <div class="panel-body">
@@ -183,9 +179,11 @@ if ($query->num_rows > 0) {
         </div>
       </div>
     </div>
+  </div>
     <div class='row'>
+      <div class='col-md-12'>
       <div class="panel panel-default">
-        <div class="panel-heading"><h3 class="panel-title">Sign-off from <strong><?php echo(urldecode($result['reqFullName'])); ?></strong></h3></div>
+        <div class="panel-heading"><h3 class="panel-title">Sign-off from <strong><?php echo(urldecode($result['reqFullName'])); ?> *</strong></h3></div>
         <div class="panel-body">
           <div style="display: none;" class="alert alert-danger" id="signOffError" role="alert"></div>
           <div style="display: none;" class="alert alert-danger" id="testingError" role="alert"></div>
@@ -218,11 +216,12 @@ if ($query->num_rows > 0) {
             ?>
             </label>
           </div>
-          <input type='submit' value='Submit' onclick='return validateSubmission();' style='width: 100px;'class='btn btn-default'/?
+          <input type='submit' value='Submit' onclick='return validateSubmission();' style='width: 100px;margin-top:8px;'class='btn btn-primary'/?
         </div>
       </div>
     </div>
     </div>
+  </div>
 
 
     <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="ConfirmDelete" aria-hidden="true">
@@ -237,7 +236,7 @@ if ($query->num_rows > 0) {
                     <p class="debug-url"></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick='return deselectVerification();'>Cancel</button>
                     <button type="button" class="btn btn-danger btn-ok" data-dismiss="modal">Confirm</button>
                 </div>
             </div>
@@ -254,15 +253,18 @@ if ($query->num_rows > 0) {
         $("#signOffError").hide();
         $("#testingError").hide();
         if ($("#testLink").val() == "" || $("#testText").val() == "" && $("#typeOfWorkField").val() != "req" ) {
-          $("#testingError").html("The <strong>Testing Information</strong> section is required. Please complete.");
+          $("#testingError").html("The <strong>Testing Information</strong> section is required. Please complete the blue section above.");
           $("#testingError").show();
           return false;
         }
         if (!$("input[name='optionsRadios']:checked").val()){
-          $("#signOffError").html("Oops! <strong>Sign-off</strong> verification is missing.");
+          $("#signOffError").html("<strong>Sign-off</strong> verification is missing. Please choose an option below.");
           $("#signOffError").show();
           return false;
         }
+      }
+      function deselectVerification(){
+        $('#disagree').attr('checked',false);
       }
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

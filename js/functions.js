@@ -408,9 +408,9 @@ function loadProjectRequests() {
 	    	html += "<div class='btn-group'><a role='button' href='view.php?requestId=" + data[i].requestId + "' target='_blank' class='btn btn-xs btn-default'>View</button></a>";
 	    	html += "<button type='button' class='btn btn-xs btn-default dropdown-toggle' data-toggle='dropdown' aria-expanded='false'>";
 	    	html += "<span class='caret'></span><span class='sr-only'>Toggle Dropdown</span></button>";
-	    	html += "<ul class='dropdown-menu' role='menu'>";
+	    	html += "<ul class='dropdown-menu dropdown-menu-right' role='menu'>";
 	    	html += "<li><a href='#' data-toggle='modal' data-target='#copyLinkModal' data-requestId=" + data[i].requestId + "><span class='glyphicon glyphicon-link'></span>&nbsp;&nbsp;Get Link</a></li>";
-				html += "<li><a href='#' data-toggle='modal' data-target='#addRepresentativeModal' data-requestId=" + data[i].requestId + "><span class='glyphicon glyphicon-send'></span>&nbsp;&nbsp;Forward</a></li>";
+				html += "<li><a href='#' data-toggle='modal' data-target='#addRepresentativeModal' data-requestId=" + data[i].requestId + "><span class='glyphicon glyphicon-user'></span>&nbsp;&nbsp;Add Approver</a></li>";
 
 				if (data[i].status == "Pending") {
 	    		html += "<li><a href='#' data-target='#requestModalEdit' id='editRequestModalButton' data-requestId=" + data[i].requestId + " onclick=getRequestWithId("+data[i].requestId+");><span class='glyphicon glyphicon-pencil'></span>&nbsp;&nbsp;Edit</a></li>";

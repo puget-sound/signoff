@@ -73,7 +73,7 @@ $fileQueryResult = $fileQuery->fetch_array(MYSQLI_ASSOC);
 
           ?>
 
-          <table>
+          <table style="margin-bottom:14px;">
             <tr>
               <td style='padding: 3px;'><strong>Project Name:</strong></td>
               <td style='padding: 3px;'><?php echo(urldecode($result['projectName'])); ?></td>
@@ -121,10 +121,10 @@ $fileQueryResult = $fileQuery->fetch_array(MYSQLI_ASSOC);
           </table>
           <?php
           if ($result['ticketNumber'] != "") {
-            echo("<a style='margin: 3px;' class='btn btn-primary' target='_blank' href='https://kbox.pugetsound.edu/adminui/ticket?ID=" . urldecode($result['ticketNumber']) . "'>KBOX TICK:" . urldecode($result['ticketNumber']) ."</a>");
+            echo("<a class='btn btn-info' target='_blank' href='https://kbox.pugetsound.edu/adminui/ticket?ID=" . urldecode($result['ticketNumber']) . "'>KBOX TICK:" . urldecode($result['ticketNumber']) ."</a>");
           }
           if ($result['soundNetLink'] != "") {
-            echo("<a style='margin: 3px;' class='btn btn-warning' href='" . urldecode($result['soundNetLink']) . "' target='_blank'>SoundNet Project Folder</a>");
+            echo("<a class='btn btn-info' href='" . urldecode($result['soundNetLink']) . "' target='_blank'>Google Drive Project Folder</a>");
           }
           if ($result['liquidPlannerLink'] != "") {
             echo("<a style='margin: 3px;' class='btn btn-info' href='" . urldecode($result['liquidPlannerLink']) . "' target='_blank'>LiquidPlanner Project</a>");
@@ -141,7 +141,7 @@ $fileQueryResult = $fileQuery->fetch_array(MYSQLI_ASSOC);
         <div class="panel panel-default">
           <div class="panel-heading"><h3 class='panel-title'>Review Requirements or Documentation</h3></div>
           <div class='panel-body'>
-            <p>Please review these documents or requirements by following this link (SoundNet): <?php echo("<a href='" . urldecode($result['soundNetLink']) . "' target='_blank'>" . urldecode($result['projectName']) . "</a>")  ?></p>
+            <p>Please review these documents or requirements by following this link: <?php echo("<a href='" . urldecode($result['soundNetLink']) . "' target='_blank'>" . urldecode($result['projectName']) . "</a>")  ?></p>
           </div>
      </div>
    </div>
