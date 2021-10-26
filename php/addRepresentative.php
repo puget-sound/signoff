@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('connect.php');
 $conn = db_connect();
 
@@ -27,7 +28,8 @@ $requestTo = $_GET['newRepresentative'];
 $newRepresentativeUserName = $_GET['newRepresentative'];//newRepresentative
 //$author = $row["author"];
 //$authorFullName = $row["authorFullName"];
-$author = $_COOKIE['SignOffAdminUser'];
+$username_parts = explode("@", $_SESSION['username']);
+$author = $username_parts[0];
 $authorFullName = ldapGetFullName($author);
 $requestDate = date("Y-m-d H:i:s", time());
 $submitDate = $row["submitDate"];

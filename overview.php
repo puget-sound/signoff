@@ -45,9 +45,10 @@ $result = $query->fetch_array(MYSQLI_ASSOC);
       padding-bottom: 10px;
     }
     </style>
+        <p><a href="index.php" style='position:absolute;margin-left:12px;display:block;'>Sign-off Requests</a></p>
     <div class="container" style='max-width: 800px;'>
      <div class='row'>
-      <p style='text-align: center;'><img src='images/PMOLogo.jpg' height=100/></p>
+      <p style='text-align: center;'><a href="index.php"><img src='images/PMOLogo.jpg' height=100/></a></p>
      </div>
      <div class='row'>
       <div class="panel panel-default">

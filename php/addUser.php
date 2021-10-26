@@ -1,8 +1,10 @@
 <?php
+session_start();
 require_once('connect.php');
 $conn = db_connect();
 $newUser = urlencode($_GET['newUser']);
-$author = urlencode($_COOKIE['SignOffAdminUser']);
+$username_parts = explode("@", $_SESSION['username']);
+$author = $username_parts[0];
 
 $newUserFull = ldapGetFullName($newUser);
 if ($newUserFull == "err") {

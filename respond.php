@@ -1,48 +1,104 @@
 <?php
-//Logging Set up
-require_once 'php/KLogger.php';
-$log = KLogger::instance('log/');
-$myname = basename(__FILE__, '.php') . ".php";
-// Load the settings from the central config file
-require_once 'cas/config.php';
-// Load the CAS lib
-require_once $phpcas_path . '/CAS.php';
-// Initialize phpCAS
-phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
+// Begin the PHP session so we have a place to store the username
+session_start();
 
-// For production use set the CA certificate that is the issuer of the cert
-// on the CAS server and uncomment the line below
-// phpCAS::setCasServerCACert($cas_server_ca_cert_path);
-
-// For quick testing you can disable SSL validation of the CAS server.
-// THIS SETTING IS NOT RECOMMENDED FOR PRODUCTION.
-// VALIDATING THE CAS SERVER IS CRUCIAL TO THE SECURITY OF THE CAS PROTOCOL!
-phpCAS::setNoCasServerValidation();
-
-// force CAS authentication
-phpCAS::forceAuthentication();
-$username = phpCAS::getUser();
-//setcookie('requestResponseUser', $username, time() + 60*60*24*30, '/');
-
-$requestId = urlencode($_GET['requestId']);
 require_once('php/connect.php');
-$conn = db_connect();
-$query = $conn->query("SELECT * FROM signoff_project_requests WHERE requestId = $requestId");
-if ($query->num_rows > 0) {
-  $log->logInfo("$myname | $username is Accessing Request $requestId...");
-  $result = $query->fetch_array(MYSQLI_ASSOC);
-  if ($username != $result['requestTo']) {
-    $log->logWarn("$myname | $username tried to access Request $requestId. $username is not recipient. Access Denied.");
-    header("Location: error.php?request=$requestId&error=wp");
-  } else if ($result['status'] == "Received" || $result['status'] == "Declined") {
-    $log->logInfo("$myname | $username Accessed Request $requestId. Request has ALREADY been signed-off. Redirect to overview.php");
-    header("Location: overview.php?requestId=$requestId&action=locked");
+
+$client_id = $OKTA_CLIENT_ID;
+$client_secret = $OKTA_CLIENT_SECRET;
+$redirect_uri = $OKTA_REDIRECT_URL;
+$metadata_url = $OKTA_METADATA_URL;
+
+// Fetch the authorization server metadata which contains a few URLs
+// that we need later, such as the authorization and token endpoints
+$metadata = http($metadata_url);
+
+if(isset($_GET['code'])) {
+
+  if($_SESSION['state'] != $_GET['state']) {
+    die('Authorization server returned an invalid state parameter');
   }
-} else {
-  $log->logWarn("$myname | $username tried to access Request $requestId. Cannot locate request number in the Database.");
-  header("Location: error.php?error=na");
+
+  if(isset($_GET['error'])) {
+    die('Authorization server returned an error: '.htmlspecialchars($_GET['error']));
+  }
+
+  $response = http($metadata->token_endpoint, [
+    'grant_type' => 'authorization_code',
+    'code' => $_GET['code'],
+    'redirect_uri' => $redirect_uri . "respond.php" . "requestId=" . $requestId,
+    'client_id' => $client_id,
+    'client_secret' => $client_secret,
+  ]);
+
+  if(!isset($response->access_token)) {
+    die('Error fetching access token');
+  }
+
+  $token = http($metadata->introspection_endpoint, [
+    'token' => $response->access_token,
+    'client_id' => $client_id,
+    'client_secret' => $client_secret,
+  ]);
+
+  if($token->active == 1) {
+    $_SESSION['username'] = $token->username;
+    //header('Location: /');
+    $requestId = urlencode($_GET['requestId']);
+    header('Location: ' . $redirect_uri . "respond.php" . "requestId=" . $requestId);
+    die();
+  }
+
+}
+
+// If there is a username, they are logged in, and we'll show the logged-in view
+if(isset($_SESSION['username'])) {
+  $username_parts = explode("@", $_SESSION['username']);
+  $username_short = $username_parts[0];
+
+  $requestId = urlencode($_GET['requestId']);
+  $conn = db_connect();
+  $query = $conn->query("SELECT * FROM signoff_project_requests WHERE requestId = $requestId");
+  if ($query->num_rows > 0) {
+    $result = $query->fetch_array(MYSQLI_ASSOC);
+    if ($username_short != $result['requestTo']) {
+      header("Location: error.php?request=$requestId&error=wp");
+    } else if ($result['status'] == "Received" || $result['status'] == "Declined") {
+      header("Location: overview.php?requestId=$requestId&action=locked");
+    }
+  } else {
+    header("Location: error.php?error=na");
+  }
+}
+
+// If there is no username, they are logged out, so show them the login link
+if(!isset($_SESSION['username'])) {
+  // Generate a random state parameter for CSRF security
+//$_SESSION['state'] = bin2hex(random_bytes(5));
+$_SESSION['state'] = bin2hex(openssl_random_pseudo_bytes(5));
+
+// Build the authorization URL by starting with the authorization endpoint
+// and adding a few query string parameters identifying this application
+$authorize_url = $metadata->authorization_endpoint.'?'.http_build_query([
+  'response_type' => 'code',
+  'client_id' => $client_id,
+  'redirect_uri' => $redirect_uri,
+  'state' => $_SESSION['state'],
+  'scope' => 'openid',
+]);
+  header('Location: ' . $authorize_url);
+  die();
+}
+
+function http($url, $params=false) {
+  $ch = curl_init($url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  if($params)
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+  return json_decode(curl_exec($ch));
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -63,15 +119,6 @@ if ($query->num_rows > 0) {
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" href="images/grey-favicon.png" type="image/png">
 
-    <!-- Custom styles for this template -->
-    <!--<link href="theme.css" rel="stylesheet">-->
-
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body role="document">
     <style>
@@ -80,9 +127,10 @@ if ($query->num_rows > 0) {
       padding-bottom: 10px;
     }
     </style>
+    <p><a href="index.php" style='position:absolute;margin-left:12px;display:block;'>Sign-off Requests</a></p>
     <div class="container" style='max-width: 860px;'>
       <div class='row'>
-       <p style='text-align: center;'><img src='images/PMOLogo.jpg' height=100/></p>
+       <p><a style='text-align: center;display:block;' href="index.php"><img src='images/PMOLogo.jpg' height=100/></a></p>
       </div>
       <div class='row'>
         <div class='col-md-6'>
@@ -117,7 +165,7 @@ if ($query->num_rows > 0) {
              <p>
                <p><strong style="width:110px;display:inline-block;">
            <?php
-             if ($result['typeOfWork'] == "project") {
+             if ($result['typeOfWork'] == "project" || $result['typeOfWork'] == "req") {
                echo("Project ID</strong>");
                echo(urldecode($result['projectId']) . "</p>");
              }
@@ -270,8 +318,5 @@ if ($query->num_rows > 0) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
-    <!--<script src="js/docs.min.js"></script> -->
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <!--<script src="js/ie10-viewport-bug-workaround.js"></script>-->
   </body>
 </html>

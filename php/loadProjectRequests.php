@@ -1,10 +1,8 @@
 <?php
+session_start();
 
-//Logging Setup for Page
-require_once 'KLogger.php';
-$log = KLogger::instance('../log/');
-$myname = basename(__FILE__, '.php') . ".php";
-$whoami = $_COOKIE['SignOffAdminUser'];
+$username_parts = explode("@", $_SESSION['username']);
+$whoami = $username_parts[0];
 
 $filterRType = $_GET['filterRType'];
 $filterDateRange = $_GET['filterDateRange'];
@@ -48,7 +46,7 @@ else {
 require_once('connect.php');
 $conn = db_connect();
 if (!$conn) {
-	$log->logError("$myname | Database connection failed. Please check $myname for errors.");
+	exit;
 }
 $query = $conn->query("SELECT * FROM signoff_project_requests
  WHERE (typeOfWork LIKE '$filterRType')
@@ -67,7 +65,6 @@ while ($result = $query->fetch_array(MYSQLI_ASSOC)) {
 	 array_push($push, $result);
 }
 
-$log->logInfo("$myname | $whoami Successfully Queried Project Requests. Pushing Results.");
 echo(json_encode($push));
 
 ?>

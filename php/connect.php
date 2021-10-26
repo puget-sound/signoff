@@ -47,7 +47,7 @@ function getFullName($id) {
 	}
 }
 
-function ldapUsernameAuth($username, $pass, $requestId) {
+/*function ldapUsernameAuth($username, $pass, $requestId) {
   global $LDAP_AUTHNAME;
 	global $LDAP_PASS;
 	global $LDAP_SERVERS;
@@ -68,6 +68,6 @@ function ldapUsernameAuth($username, $pass, $requestId) {
     } else {
     	header("Location: respond_login.php?error=wuwp&request=$requestId");
     }
-}
+}*/
 
 ?>
