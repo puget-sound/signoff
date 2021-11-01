@@ -9,6 +9,7 @@ $client_secret = $OKTA_CLIENT_SECRET;
 $redirect_uri = $OKTA_REDIRECT_URL;
 
 $metadata_url = $OKTA_METADATA_URL;
+$authorization_endpoint = $OKTA_AUTHORIZATION_ENDPOINT;
 
 // Fetch the authorization server metadata which contains a few URLs
 // that we need later, such as the authorization and token endpoints
@@ -71,7 +72,7 @@ $_SESSION['state'] = bin2hex(openssl_random_pseudo_bytes(5));
 
 // Build the authorization URL by starting with the authorization endpoint
 // and adding a few query string parameters identifying this application
-$authorize_url = $metadata->authorization_endpoint.'?'.http_build_query([
+$authorize_url = $authorization_endpoint.'?'.http_build_query([
   'response_type' => 'code',
   'client_id' => $client_id,
   'redirect_uri' => $redirect_uri,

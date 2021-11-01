@@ -13,4 +13,12 @@ $API_TOKEN = "atokengoeshere";
 
 $BOOKMARKLET_SERVER = "servername";
 
+$OKTA_CLIENT_ID = 'Client ID';
+$OKTA_CLIENT_SECRET = 'Client Secret';
+$OKTA_REDIRECT_URL = 'http://url';
+
+$OKTA_METADATA_URL = 'https://url';
+
+$OKTA_AUTHORIZATION_ENDPOINT = 'https://url';
+
 ?>
