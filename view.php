@@ -114,7 +114,7 @@ $fileQueryResult = $fileQuery->fetch_array(MYSQLI_ASSOC);
             <tr>
               <td style='padding: 3px;'><strong>Get link:</strong></td>
               <td style='padding: 3px;'>
-                <input id="get-signoff-link" class="form-control input-sm" type="text" value="http://signoff.pugetsound.edu/respond.php?requestId=<?php echo $result['requestId']?>" style="width:450px;" selected="selected">
+                <input id="get-signoff-link" class="form-control input-sm" type="text" value="https://signoff.pugetsound.edu/respond.php?requestId=<?php echo $result['requestId']?>" style="width:450px;" selected="selected">
                 </td>
             <tr>
               <?php }?>

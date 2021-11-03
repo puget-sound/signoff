@@ -526,7 +526,7 @@ $(document).ready(function() {
 		$("#copyPasteModalLink").html("");
 		var button = $(event.relatedTarget); // Button that triggered the modal
   	request = button.data('requestid');
-		$("#copyPasteModalLink").val("http://signoff.pugetsound.edu/respond.php?requestId=" + request).select();
+		$("#copyPasteModalLink").val("https://signoff.pugetsound.edu/respond.php?requestId=" + request).select();
 	})
 
 	$('#addRepresentativeModal').on('shown.bs.modal', function (event) {

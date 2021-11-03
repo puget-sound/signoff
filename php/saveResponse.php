@@ -47,7 +47,7 @@ if ($query) {
 	if (urldecode($emailQuery['additionalComments']) != "") {
 		$message .= urldecode($emailQuery['reqFullName']) . " also left the following comments:<br>" . urldecode($emailQuery['additionalComments']);
 	}
-	$message .= "<br><br>To view the full request, follow this link: <a href='http://signoff.pugetsound.edu/view.php?requestId=" . $emailQuery['requestId'] . "'>http://signoff.pugetsound.edu/view.php?requestId=" . $emailQuery['requestId'] . "</a><br><br>";
+	$message .= "<br><br>To view the full request, follow this link: <a href='https://signoff.pugetsound.edu/view.php?requestId=" . $emailQuery['requestId'] . "'>https://signoff.pugetsound.edu/view.php?requestId=" . $emailQuery['requestId'] . "</a><br><br>";
 	$message .= "</div>";
 	$body = rtrim(chunk_split(base64_encode($message)));
 	$headers  = 'MIME-Version: 1.0' . "\r\n";
